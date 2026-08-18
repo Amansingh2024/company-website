@@ -8,6 +8,7 @@ import ProductGrid from './components/ProductGrid';
 import RoomVisualizer from './components/RoomVisualizer';
 import Craftsmanship from './components/Craftsmanship';
 import Testimonials from './components/Testimonials';
+import FAQSection from './components/FAQSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import ProductModal from './components/ProductModal';
@@ -102,7 +103,10 @@ function App() {
       {/* Verified Reviews & Trust Stats */}
       <Testimonials />
 
-      {/* Showroom Map & Instant WhatsApp Quote Booking */}
+      {/* Interactive FAQ Section */}
+      <FAQSection />
+
+      {/* Showroom Map & Instant WhatsApp Quote Booking (Dariyapur Bazar) */}
       <ContactSection />
 
       {/* Footer */}

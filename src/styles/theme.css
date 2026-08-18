@@ -1853,6 +1853,98 @@ button {
 }
 
 /* ==========================================================================
+   FAQ SECTION
+   ========================================================================== */
+.faq-section {
+  padding: 100px 0;
+  position: relative;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--line-subtle);
+}
+
+.faq-accordion-wrap {
+  max-width: 840px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+}
+
+.faq-item-card {
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  overflow: hidden;
+  transition: all 0.25s var(--ease-spring);
+  cursor: pointer;
+}
+.faq-item-card:hover {
+  border-color: var(--line-gold);
+  background: var(--bg-card-hover);
+}
+.faq-item-card.open {
+  border-color: var(--brass-light);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.faq-question-btn {
+  width: 100%;
+  padding: 22px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+}
+.faq-q-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.faq-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(201, 151, 63, 0.1);
+  border: 1px solid var(--line-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.faq-q-text {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-cream);
+  line-height: 1.35;
+}
+.faq-chevron {
+  color: var(--brass-light);
+  transition: transform 0.3s var(--ease-spring);
+  flex-shrink: 0;
+}
+.faq-chevron.rotate {
+  transform: rotate(180deg);
+}
+
+.faq-answer-box {
+  padding: 0 24px 24px 74px;
+  color: var(--text-cream-dim);
+  font-size: 14.5px;
+  line-height: 1.65;
+  animation: fadeIn 0.3s ease;
+}
+@media (max-width: 600px) {
+  .faq-answer-box {
+    padding: 0 20px 20px 20px;
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
    CONTACT & SHOWROOM
    ========================================================================== */
 .contact-section {

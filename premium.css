@@ -1,0 +1,7 @@
+.cursor-dot,.cursor-ring{display:none}
+@media(pointer:fine){
+  body{cursor:none}.cursor-dot,.cursor-ring{display:block;position:fixed;z-index:100;left:0;top:0;pointer-events:none;will-change:transform}.cursor-dot{width:7px;height:7px;background:#e56b3f;border-radius:50%;margin:-3.5px}.cursor-ring{width:32px;height:32px;border:1px solid #1e261e;border-radius:50%;margin:-16px;transition:width .25s,height .25s,margin .25s,background .25s,border-color .25s}.cursor-active .cursor-ring{width:52px;height:52px;margin:-26px;background:rgba(214,240,74,.35);border-color:transparent}
+}
+.pill{transition:transform .24s cubic-bezier(.2,.8,.2,1),background .25s,color .25s,box-shadow .25s}.pill:hover{background:#1e261e;color:#eceae1;box-shadow:0 12px 25px rgba(30,38,30,.18)}
+.product-card{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;transform-style:preserve-3d}.product-card:hover{box-shadow:0 28px 40px rgba(30,38,30,.2)}.catalog-item{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+@media(pointer:coarse){.product-card:active,.catalog-item:active{transform:scale(.975)}.pill:active{transform:scale(.94)!important}.film-visual:active{transform:scale(.985)}.film-visual{transition:transform .25s ease}}

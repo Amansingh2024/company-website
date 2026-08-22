@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { X, Star, ShieldCheck, Truck, RefreshCw, MessageCircle, Sparkles, Ruler, Award, Play, Image as ImageIcon, ChevronLeft, ChevronRight } from 'lucide-react';
-import confetti from 'canvas-confetti';
-import { playClick, playPop, playChime } from '../utils/audio';
+import { X, Star, ShieldCheck, Truck, RefreshCw, Sparkles, Ruler, Award, ChevronLeft, ChevronRight } from 'lucide-react';
+import { playClick, playPop } from '../utils/audio';
 import { getProductViews } from '../utils/productViews';
 
 // ── Auto-generate side & back view from first image via Unsplash crop params ──
 export default function ProductModal({ product, onClose }) {
   const [selectedImage, setSelectedImage] = useState(0);
   const [activeTab, setActiveTab]         = useState('specs');
-  const [showVideo, setShowVideo]         = useState(false);
   const [paused, setPaused]               = useState(false);
 
   const imageSet = useMemo(() => getProductViews(product), [product]);
@@ -30,7 +28,7 @@ export default function ProductModal({ product, onClose }) {
 
   // Auto-slideshow every 3.5s
   useEffect(() => {
-    if (paused || showVideo || imageSet.length <= 1) return;
+    if (paused || imageSet.length <= 1) return;
     const timer = setInterval(() => {
       setSelectedImage(prev => (prev + 1) % imageSet.length);
     }, 3500);
@@ -40,7 +38,6 @@ export default function ProductModal({ product, onClose }) {
   // Reset when product changes
   useEffect(() => {
     setSelectedImage(0);
-    setShowVideo(false);
     setPaused(false);
     setActiveTab('specs');
   }, [product?.id]);
@@ -50,15 +47,6 @@ export default function ProductModal({ product, onClose }) {
   const goNext = () => { playClick(); setPaused(true); setSelectedImage(p => (p + 1) % imageSet.length); };
   const goPrev = () => { playClick(); setPaused(true); setSelectedImage(p => (p - 1 + imageSet.length) % imageSet.length); };
   const pickThumb = (idx) => { playClick(); setPaused(true); setSelectedImage(idx); };
-
-  const handleOrderWhatsApp = () => {
-    playChime();
-    confetti({ particleCount: 70, spread: 60, origin: { y: 0.7 } });
-    const msg = encodeURIComponent(
-      `Namaste Vishwakarma Furniture & Electronics! 🌸\n\nI want to get a quote & details for:\n*Product:* ${product.name}\n*Category:* ${product.categoryName}\n*Dimensions:* ${product.dimensions || 'Standard'}\n\nPlease share the best price quote and delivery timeline to my address.`
-    );
-    window.open(`https://wa.me/919876543210?text=${msg}`, '_blank');
-  };
 
   const currentImg = imageSet[selectedImage] || { url: product.images[0], label: 'Front View' };
 
@@ -82,19 +70,7 @@ export default function ProductModal({ product, onClose }) {
               onMouseEnter={() => setPaused(true)}
               onMouseLeave={() => setPaused(false)}
             >
-              {showVideo && product.category === 'beds' && product.video3D ? (
-                <iframe
-                  width="100%" height="100%"
-                  src={product.video3D}
-                  title={`${product.name} 3D Video`}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  style={{ minHeight: '300px', borderRadius: '8px' }}
-                />
-              ) : (
-                <>
-                  <img
+                <img
                     key={`${product.id}-${selectedImage}`}
                     src={currentImg.url}
                     alt={`${product.name} – ${currentImg.label}`}
@@ -132,32 +108,15 @@ export default function ProductModal({ product, onClose }) {
                       <div className="modal-progress-fill" />
                     </div>
                   )}
-                </>
-              )}
 
               {/* Image label */}
               <div className="modal-img-tag">
-                {showVideo && product.category === 'beds' && product.video3D
-                  ? <><Play size={13} /> 3D Product Video</>
-                  : <><Sparkles size={13} /> {currentImg.label}</>
-                }
+                <Sparkles size={13} /> {currentImg.label}
               </div>
             </div>
 
-            {/* Video / Gallery toggle */}
-            {product.category === 'beds' && product.video3D && (
-              <div className="modal-media-toggle">
-                <button className={`toggle-btn ${!showVideo ? 'active' : ''}`} onClick={() => { playClick(); setShowVideo(false); }}>
-                  <ImageIcon size={14} /> Gallery
-                </button>
-                <button className={`toggle-btn ${showVideo ? 'active' : ''}`} onClick={() => { playClick(); setShowVideo(true); }}>
-                  <Play size={14} /> 3D Video
-                </button>
-              </div>
-            )}
-
             {/* Thumbnail strip */}
-            {!showVideo && imageSet.length > 1 && (
+            {imageSet.length > 1 && (
               <div className="modal-thumbnails">
                 {imageSet.map((imgObj, idx) => (
                   <button
@@ -198,7 +157,7 @@ export default function ProductModal({ product, onClose }) {
 
             <div className="modal-price-box">
               <div className="price-main">
-                <span className="price-big">Price On Request</span>
+                <span className="price-big">₹{product.price.toLocaleString('en-IN')}</span>
                 <span className="save-badge">Direct Workshop Price</span>
               </div>
               <p className="price-note">Inclusive of GST, Free Transit Insurance &amp; Room Setup.</p>
@@ -242,14 +201,6 @@ export default function ProductModal({ product, onClose }) {
                   </div>
                 </div>
               )}
-            </div>
-
-            {/* CTA */}
-            <div className="modal-cta-row">
-              <button className="modal-whatsapp-btn" onClick={handleOrderWhatsApp}>
-                <MessageCircle size={18} />
-                <span>Get Quote on WhatsApp</span>
-              </button>
             </div>
 
             <div className="modal-security-note">

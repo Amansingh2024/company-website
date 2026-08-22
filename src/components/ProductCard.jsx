@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Eye, MessageCircle, Star, Sparkles, ArrowUpRight, Box, Ruler, Play } from 'lucide-react';
+import { Eye, Star, Sparkles } from 'lucide-react';
 import { playHover, playClick, playPop } from '../utils/audio';
 import { getProductViews } from '../utils/productViews';
 
@@ -46,15 +46,6 @@ export default function ProductCard({
     setSheenStyle({ opacity: 0, transition: 'opacity 0.4s ease' });
   };
 
-  const handleWhatsAppInquiry = (e) => {
-    e.stopPropagation();
-    playClick();
-    const message = encodeURIComponent(
-      `Namaste Vishwakarma Furniture & Electronics! 🌸\n\nI am interested in getting the price quote for:\n*Product:* ${product.name}\n*Category:* ${product.categoryName}\n*Product ID:* ${product.id}\n\nPlease share the latest price and delivery timeline to my pincode.`
-    );
-    window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
-  };
-
   return (
     <div 
       className="p3d-card-wrapper"
@@ -84,11 +75,6 @@ export default function ProductCard({
               </span>
             )}
             <span className="p3d-badge discount">Direct Workshop</span>
-            {product.category === 'beds' && product.is3DAvailable && (
-              <span className="p3d-badge three-d">
-                <Box size={11} /> 3D View
-              </span>
-            )}
           </div>
 
           {/* Fast Image dots if multiple */}
@@ -123,20 +109,6 @@ export default function ProductCard({
             </button>
           </div>
 
-          {/* Video Play Button */}
-          {product.category === 'beds' && product.video3D && (
-            <button 
-              className="p3d-video-button"
-              onClick={(e) => {
-                e.stopPropagation();
-                playClick();
-                onQuickView(product);
-              }}
-              title="Play 3D Product Video"
-            >
-              <Play size={28} fill="white" />
-            </button>
-          )}
         </div>
 
         {/* Card Body */}
@@ -168,21 +140,7 @@ export default function ProductCard({
 
           {/* Price Block */}
           <div className="p3d-price-block">
-            <div className="quote-status-row">
-              <span className="quote-status-sub">Contact for Latest Price</span>
-            </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="p3d-actions">
-            <button 
-              className="p3d-wa-btn"
-              onClick={handleWhatsAppInquiry}
-              title="Get Price Quote on WhatsApp"
-            >
-              <MessageCircle size={16} />
-              <span>Get Quote</span>
-            </button>
+            <span className="price-main">₹{product.price.toLocaleString('en-IN')}</span>
           </div>
         </div>
       </div>

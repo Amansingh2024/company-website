@@ -9,6 +9,9 @@ export default function ProductGrid({
   onSelectCategory, 
   onQuickView
 }) {
+  const categoryCount = (categoryId) => categoryId === 'all'
+    ? PRODUCTS.length
+    : PRODUCTS.filter((item) => item.category === categoryId).length;
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('popular'); // 'popular' | 'rating' | 'name-asc'
   const [filterBestsellerOnly, setFilterBestsellerOnly] = useState(false);
@@ -66,7 +69,7 @@ export default function ProductGrid({
               <em>Built for Indian Lifestyles.</em>
             </h2>
             <p className="section-subtitle">
-              Featuring 9 solid-wood beds, 8 handcrafted sofas, and 8 top-tier smart home electronics.
+              Featuring {categoryCount('beds')} solid-wood beds, {categoryCount('sofas')} handcrafted sofas, and {categoryCount('electronics')} top-tier smart home electronics.
             </p>
           </div>
 
@@ -109,7 +112,7 @@ export default function ProductGrid({
                 >
                   {getCategoryIcon(cat.icon)}
                   <span className="tab-name">{cat.name}</span>
-                  <span className="tab-counter">{cat.count}</span>
+                  <span className="tab-counter">{categoryCount(cat.id)}</span>
                 </button>
               );
             })}
@@ -178,7 +181,7 @@ export default function ProductGrid({
                 setFilterBestsellerOnly(false);
               }}
             >
-              View All 25 Products
+              View All {PRODUCTS.length} Products
             </button>
           </div>
         )}

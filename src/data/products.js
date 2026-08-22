@@ -806,3 +806,30 @@ export const PRODUCTS = [
     ]
   }
 ];
+
+// Secondary catalogue photos become their own products instead of extra gallery images.
+const derivedProducts = PRODUCTS.flatMap((product) =>
+  product.images.slice(1).map((image, index) => ({
+    ...product,
+    id: `${product.id}-collection-${index + 1}`,
+    name: `${product.name} — ${index === 0 ? 'Signature' : 'Studio'} Edition`,
+    subtitle: `Curated ${index === 0 ? 'signature' : 'studio'} selection from our ${product.categoryName.toLowerCase()} collection.`,
+    tag: 'New Arrival · Curated Selection',
+    isBestseller: false,
+    is3DAvailable: false,
+    video3D: null,
+    reviewsCount: Math.max(12, Math.round(product.reviewsCount / 2)),
+    images: [image],
+  }))
+);
+
+PRODUCTS.forEach((product) => {
+  product.images = product.images.slice(0, 1);
+});
+PRODUCTS.push(...derivedProducts);
+
+CATEGORIES.forEach((category) => {
+  category.count = category.id === 'all'
+    ? PRODUCTS.length
+    : PRODUCTS.filter((product) => product.category === category.id).length;
+});

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Palette, Sparkles, MessageCircle, Box } from 'lucide-react';
 import { playClick, playPop } from '../utils/audio';
 
+// Vite serves the site from /company-website/ on GitHub Pages, not from `/`.
+const publicImage = (fileName) => `${import.meta.env.BASE_URL}images/${fileName}`;
+
 // ── Dynamic finish variants per room tab ─────────────────────────────────────
 const ROOM_VARIANTS = {
   bedroom: {
@@ -11,7 +14,7 @@ const ROOM_VARIANTS = {
       swatch: '#4a2411',
       badge: 'King Size Sheesham · Dark Walnut',
       title: 'Master Bedroom Suite 3D',
-      image: '/images/luxury-bed-day.png',
+      image: publicImage('luxury-bed-day.png'),
       productsIncluded: ['Maharaja Grand Sheesham King Bed', '2x Floating Nightstands', 'Comfort Ortho Mattress'],
       statusTag: 'Custom Made-to-Measure',
       warranty: '10-Year Warranty',
@@ -24,7 +27,7 @@ const ROOM_VARIANTS = {
       swatch: '#8a5229',
       badge: 'Royal Canopy Bed · Burma Teak Gold',
       title: 'Heritage Bedroom Suite 3D',
-      image: '/images/infinite-canopy-bed.png',
+      image: publicImage('infinite-canopy-bed.png'),
       productsIncluded: ['Royal Teakwood Poster Canopy Bed', '2x Brass Lamp Nightstands', 'Luxury Wool Mattress'],
       statusTag: 'Heritage Handcrafted',
       warranty: 'Lifetime Termite + 15-Year Frame',
@@ -37,7 +40,7 @@ const ROOM_VARIANTS = {
       swatch: '#175c4c',
       badge: 'Velvet Floating Bed · Emerald Glow',
       title: 'Jewel Bedroom Suite 3D',
-      image: '/images/luxury-bed-night.png',
+      image: publicImage('luxury-bed-night.png'),
       productsIncluded: ['Aura Velvet Floating King Bed', '2x Velvet Ottoman Benches', 'Smart Ambient LED Lighting'],
       statusTag: 'Velvet Upholstery Edition',
       warranty: '5-Year Frame & Foam',
@@ -181,9 +184,7 @@ export default function RoomVisualizer({ onSelectCategory }) {
 
               {/* Material / Finish Selector */}
               <div className="vis-control-block">
-                <label className="vis-control-label">
-                  1. {activeRoom === 'electronics' ? 'Choose Brand & Bundle:' : 'Choose Wood & Fabric Finish:'}
-                </label>
+                <label className="vis-control-label">1. Choose Wood &amp; Fabric Finish:</label>
                 <div className="finish-grid">
                   {FINISH_KEYS.map((key) => {
                     const v = ROOM_VARIANTS[activeRoom][key];

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, Volume2, VolumeX, Menu, X, BedDouble, Armchair, Tv, Sparkles, Box } from 'lucide-react';
+import { MessageCircle, Volume2, VolumeX, Menu, X, BedDouble, Armchair, Tv, Sparkles, Box, Play } from 'lucide-react';
 import { toggleSound, isSoundEnabled, playClick } from '../utils/audio';
 
 export default function Navbar({ 
@@ -60,6 +60,7 @@ export default function Navbar({
               Electronics (8)
             </a>
             <a href="#visualizer" onClick={() => playClick()}>3D Studio</a>
+            <a href={`${import.meta.env.BASE_URL}showroom-tour.html`} onClick={() => playClick()}>Video Tour</a>
             <a href="#craftsmanship" onClick={() => playClick()}>Craftsmanship</a>
             <a href="#contact" onClick={() => playClick()}>Showroom</a>
           </nav>
@@ -144,6 +145,9 @@ export default function Navbar({
             onClick={() => { playClick(); setMobileMenuOpen(false); }}
           >
             <Box size={20} /> 3D Room Studio
+          </a>
+          <a href={`${import.meta.env.BASE_URL}showroom-tour.html`} onClick={() => { playClick(); setMobileMenuOpen(false); }}>
+            <Play size={20} /> Video Showroom Tour
           </a>
           <a 
             href="#craftsmanship" 

@@ -3986,236 +3986,317 @@ button {
 }
 
 /* ==========================================================================
-   COMPREHENSIVE MOBILE ALIGNMENT FIXES (≤768px)
+   COMPREHENSIVE MOBILE ALIGNMENT FIXES (≤768px & ≤480px)
    ========================================================================== */
 
-/* --- Navbar mobile: prevent brand overflow on tiny screens --- */
+/* --- Global Mobile Overflows & Resets --- */
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.app-root {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* --- Container on Mobile --- */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 14px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* --- Navbar Mobile --- */
+@media (max-width: 768px) {
+  .navbar-header {
+    height: 72px;
+  }
+  .navbar-header.scrolled {
+    height: 68px;
+  }
+  .nav-container {
+    padding: 0 12px;
+  }
+  .mobile-nav-panel {
+    top: 72px;
+    height: calc(100vh - 72px);
+    overflow-y: auto;
+    padding: 24px 18px;
+  }
+}
+
 @media (max-width: 480px) {
   .brand-main-name {
     font-size: 15px;
   }
   .brand-sub-name {
-    font-size: 7.5px;
-    letter-spacing: 0.14em;
+    font-size: 7px;
+    letter-spacing: 0.12em;
   }
   .brand-crest {
-    width: 38px;
-    height: 38px;
-    font-size: 17px;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
   }
   .nav-whatsapp-pill {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     padding: 0;
     border-radius: 50%;
     justify-content: center;
   }
+  .nav-icon-btn {
+    width: 36px;
+    height: 36px;
+  }
 }
 
-/* --- Hero Section: reduce top/bottom padding on mobile --- */
+/* --- Hero Section Mobile --- */
 @media (max-width: 768px) {
   .hero-section {
-    padding: 110px 0 0;
+    padding: 92px 0 0;
+    overflow-x: hidden;
   }
 
-  /* Hide floating ambient tags on mobile — they overlap content */
+  /* Hide floating background tags on mobile to prevent overlapping */
   .hero-floating-tags-layer {
     display: none;
   }
 
-  /* Brand letter row: shrink letters so they fit in one row */
-  .brand-letter-span {
-    font-size: clamp(22px, 8vw, 48px);
-    letter-spacing: 0.03em;
+  .hero-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
   }
 
-  /* Keep brand stagger centered-left */
+  .hero-text-col {
+    width: 100%;
+    order: 1;
+  }
+
+  .hero-3d-col {
+    width: 100%;
+    order: 2;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  /* Brand letter row: flex wrap cleanly */
   .hero-brand-stagger {
-    margin: 8px 0 12px;
+    margin: 6px 0 10px;
+    width: 100%;
+  }
+  .brand-letter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+    width: 100%;
+  }
+  .brand-letter-span {
+    font-size: clamp(20px, 6.8vw, 36px);
+    letter-spacing: 0.02em;
   }
 
-  /* Typewriter display: reduce padding and font */
+  /* Typewriter display box */
   .hero-typewriter-display {
-    padding: 10px 14px;
-    margin: 10px 0 16px;
+    padding: 10px 12px;
+    margin: 10px 0 14px;
+    border-radius: 12px;
+  }
+  .typewriter-prefix {
+    font-size: 10px;
+    margin-bottom: 2px;
   }
   .typewriter-headline {
-    font-size: clamp(17px, 4.5vw, 28px);
-    min-height: 32px;
+    font-size: clamp(16px, 4.2vw, 24px);
+    min-height: 28px;
+    line-height: 1.3;
   }
 
-  /* Hero lead text: remove max-width restriction */
+  /* Hero lead text */
   .hero-lead {
-    font-size: 15.5px;
+    font-size: 14.5px;
     max-width: 100%;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    line-height: 1.55;
   }
 
-  /* CTA button row: stack on very small screens */
+  /* CTA button row */
   .hero-btn-row {
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
+    gap: 10px;
+    margin-bottom: 24px;
   }
   .btn-luxury-primary,
   .btn-luxury-glass {
     width: 100%;
     justify-content: center;
-    padding: 13px 20px;
-    font-size: 14px;
+    padding: 12px 18px;
+    font-size: 13.5px;
   }
 
-  /* Quick chips: tighter sizing */
+  /* Quick chips */
   .hero-quick-chips {
-    gap: 8px;
-    margin-bottom: 24px;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .quick-chip-label {
+    font-size: 10px;
+    width: 100%;
+    margin-bottom: 2px;
   }
   .quick-chip {
-    font-size: 12px;
-    padding: 7px 13px;
+    font-size: 11.5px;
+    padding: 6px 12px;
   }
 
-  /* Guarantees: single column */
+  /* Guarantees */
   .hero-guarantees {
     flex-direction: column;
-    gap: 12px;
-    padding-top: 18px;
+    gap: 10px;
+    padding-top: 14px;
   }
 
-  /* 3D canvas height: shorter on mobile for faster load */
+  /* 3D studio canvas container */
   .three-studio-wrapper {
-    height: 340px;
+    height: 320px;
+    width: 100%;
+  }
+  .three-canvas-container {
+    touch-action: pan-y;
+  }
+  .stage-header-badge {
+    top: 10px;
+    left: 10px;
+    font-size: 9.5px;
+    padding: 4px 10px;
+  }
+  .studio-top-bar {
+    top: 48px;
+    left: 10px;
+    right: 10px;
+  }
+  .model-pill {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+  .tool-btn {
+    padding: 6px 8px;
+    font-size: 10.5px;
   }
 
-  /* Bottom ticker: less margin-top */
+  /* Bottom ticker */
   .hero-ticker-track {
-    margin-top: 32px;
+    margin-top: 24px;
+    padding: 10px 0;
+  }
+  .ticker-text {
+    font-size: 11px;
   }
 }
 
-/* --- General section padding reduction on mobile --- */
+/* --- Section Paddings on Mobile --- */
 @media (max-width: 768px) {
   .catalog-section,
   .craft-section,
   .faq-section,
   .contact-section {
-    padding: 64px 0;
+    padding: 48px 0;
   }
 
   .visualizer-section,
   .testimonials-section {
-    padding: 64px 0 72px;
+    padding: 48px 0 56px;
   }
 
   .free-delivery-section {
-    padding: 56px 0;
+    padding: 44px 0;
   }
 
   .footer-section {
-    padding: 60px 0 24px;
+    padding: 48px 0 20px;
   }
 }
 
-/* --- Section heads: fix spacing --- */
+/* --- Section Headings on Mobile --- */
 @media (max-width: 768px) {
   .section-head-center {
-    margin-bottom: 36px;
+    margin-bottom: 28px;
+  }
+  .section-head-split {
+    gap: 20px;
+    margin-bottom: 24px;
   }
   .section-title {
-    font-size: clamp(24px, 6vw, 36px);
-    margin-bottom: 10px;
+    font-size: clamp(22px, 5.5vw, 32px);
+    margin-bottom: 8px;
   }
   .section-subtitle {
-    font-size: 14.5px;
+    font-size: 14px;
   }
 }
 
-/* --- TypewriterModal: proper mobile padding & layout --- */
-@media (max-width: 600px) {
-  .typewriter-modal-backdrop {
-    padding: 12px;
-    align-items: flex-end;
-  }
-  .typewriter-modal-container {
-    padding: 22px 18px 26px;
-    border-radius: 20px 20px 16px 16px;
-    max-height: 92vh;
-  }
-  .modal-brand-name {
-    font-size: 21px;
-    gap: 8px;
-  }
-  .modal-header-top {
-    padding-right: 30px;
-    gap: 6px;
-  }
-  .badge-pulse-gold,
-  .free-del-chip {
-    font-size: 10px;
-  }
-  .typewriter-live-box {
-    padding: 10px 12px;
-    margin-bottom: 16px;
-  }
-  .typewriter-typing-text {
-    font-size: 13px;
-  }
-  .modal-guarantee-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    font-size: 11px;
-  }
-  .typewriter-submit-btn {
-    font-size: 13.5px;
-    padding: 12px 16px;
-  }
-}
-
-/* --- Quote Form Card: reduce padding on mobile --- */
+/* --- Free Delivery Section Mobile --- */
 @media (max-width: 768px) {
-  .quote-form-card {
-    padding: 24px 18px;
+  .free-delivery-card-inner {
+    padding: 28px 16px;
+    border-radius: 20px;
   }
-  .form-head h3 {
-    font-size: 20px;
-  }
-}
-
-/* --- Contact Section map height --- */
-@media (max-width: 600px) {
-  .map-iframe-wrap {
-    height: 180px;
-  }
-  .map-live-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-}
-
-/* --- Visualizer controls panel: reduce padding --- */
-@media (max-width: 768px) {
-  .vis-controls-panel {
-    padding: 20px 18px;
-    gap: 18px;
-  }
-}
-
-/* --- Free Delivery Section: text sizing --- */
-@media (max-width: 480px) {
   .delivery-giant-title {
-    font-size: clamp(36px, 12vw, 58px);
+    font-size: clamp(34px, 10vw, 54px);
+    line-height: 1;
+    margin-bottom: 10px;
   }
   .delivery-radius-highlight {
-    font-size: clamp(16px, 4.5vw, 24px);
+    font-size: clamp(16px, 4.2vw, 22px);
+    margin-bottom: 12px;
   }
   .delivery-lead-sub {
-    font-size: 14px;
+    font-size: 13.5px;
+    margin-bottom: 20px;
+  }
+  .delivery-regions-wrap {
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+  .region-chip {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+  .pincode-check-box {
+    padding: 14px;
+    margin-bottom: 20px;
+  }
+  .pincode-input-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pincode-input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .pincode-check-btn {
+    width: 100%;
+    justify-content: center;
   }
   .delivery-actions-row {
     flex-direction: column;
-    align-items: stretch;
+    gap: 10px;
+    width: 100%;
   }
   .delivery-actions-row .btn-luxury-primary,
   .delivery-actions-row .btn-luxury-glass {
@@ -4224,87 +4305,315 @@ button {
   }
 }
 
-/* --- Product Grid: reduce gap on mobile --- */
-@media (max-width: 640px) {
+/* --- Product Catalog & Filter Toolbar Mobile --- */
+@media (max-width: 768px) {
+  .catalog-search-wrap {
+    width: 100%;
+    min-width: 0;
+  }
+  .catalog-search-input {
+    padding: 11px 36px 11px 40px;
+    font-size: 13px;
+  }
+  .filter-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px;
+    gap: 10px;
+    border-radius: 14px;
+  }
+  .category-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 6px;
+    padding: 2px 2px 6px 2px;
+    scrollbar-width: none;
+    width: 100%;
+  }
+  .category-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .category-tab {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 7px 12px;
+    font-size: 12px;
+    gap: 6px;
+  }
+  .filter-actions {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .filter-toggle-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 7px 10px;
+    font-size: 11.5px;
+    white-space: nowrap;
+  }
+  .sort-dropdown-wrap {
+    flex: 1.2;
+  }
+  .sort-select {
+    width: 100%;
+    font-size: 11.5px;
+    padding: 7px 22px 7px 26px;
+  }
+  .results-meta-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
   .products-grid-3d {
-    gap: 18px;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
   .p3d-body {
     padding: 16px;
   }
   .p3d-title {
-    font-size: 16.5px;
+    font-size: 16px;
   }
-  .p3d-actions {
-    grid-template-columns: 1fr 1fr;
+  .p3d-subtitle {
+    font-size: 12.5px;
+    min-height: auto;
+    margin-bottom: 8px;
+  }
+}
+
+/* --- Room Visualizer Mobile --- */
+@media (max-width: 768px) {
+  .visualizer-card {
+    border-radius: 16px;
+  }
+  .visualizer-nav {
+    flex-direction: column;
+  }
+  .vis-nav-btn {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+  .visualizer-stage-grid {
+    grid-template-columns: 1fr;
+  }
+  .vis-viewport {
+    min-height: 280px;
+  }
+  .vis-controls-panel {
+    padding: 18px 14px;
+    gap: 16px;
+  }
+  .vis-panel-header h3 {
+    font-size: 18px;
+  }
+  .finish-card {
+    padding: 8px 12px;
+  }
+  .vis-price-row {
+    flex-direction: column;
+    align-items: flex-start;
     gap: 8px;
   }
 }
 
-/* --- Craftsmanship: tighten on mobile --- */
+/* --- Craftsmanship Mobile --- */
 @media (max-width: 768px) {
   .craft-grid {
-    gap: 36px;
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
   .craft-lead {
-    font-size: 15.5px;
-    margin-bottom: 22px;
+    font-size: 14.5px;
+    margin-bottom: 18px;
   }
-  .craft-floating-card {
+  .craft-step-card {
     padding: 14px;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-  }
-}
-
-/* --- Testimonials grid: gap reduction on mobile --- */
-@media (max-width: 768px) {
-  .testimonials-grid {
-    gap: 18px;
-  }
-  .testi-card-3d {
-    padding: 22px;
-  }
-  .stats-bar-3d {
-    margin-bottom: 36px;
-  }
-  .stat-item-3d {
-    padding: 22px 16px;
-  }
-}
-
-/* --- FAQ: tighten on mobile --- */
-@media (max-width: 768px) {
-  .faq-accordion-wrap {
     gap: 12px;
   }
-  .faq-question-btn {
-    padding: 18px 16px;
-  }
-  .faq-q-text {
-    font-size: 15px;
+  .step-icon-box {
+    width: 38px;
+    height: 38px;
   }
 }
 
-/* --- Footer: stack bottom bar on mobile --- */
-@media (max-width: 560px) {
+/* --- Testimonials & Stats Mobile --- */
+@media (max-width: 768px) {
+  .stats-bar-3d {
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 28px;
+  }
+  .stat-item-3d {
+    padding: 18px 12px;
+  }
+  .stat-number {
+    font-size: clamp(22px, 6vw, 32px);
+  }
+  .stat-label {
+    font-size: 11.5px;
+  }
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .testi-card-3d {
+    padding: 20px 16px;
+  }
+  .testi-body {
+    font-size: 14.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-bar-3d {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* --- FAQ Mobile --- */
+@media (max-width: 768px) {
+  .faq-accordion-wrap {
+    gap: 10px;
+  }
+  .faq-question-btn {
+    padding: 16px 14px;
+    gap: 10px;
+  }
+  .faq-icon-box {
+    width: 30px;
+    height: 30px;
+  }
+  .faq-q-text {
+    font-size: 14.5px;
+  }
+  .faq-answer-box {
+    padding: 0 14px 16px 14px;
+    font-size: 13.5px;
+  }
+}
+
+/* --- Contact & Showroom Mobile --- */
+@media (max-width: 768px) {
+  .contact-grid-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .contact-lead-p {
+    font-size: 14.5px;
+    margin-bottom: 20px;
+  }
+  .contact-detail-card {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+  .contact-icon-box {
+    width: 36px;
+    height: 36px;
+  }
+  .quote-form-card {
+    padding: 20px 16px;
+  }
+  .form-head h3 {
+    font-size: 19px;
+  }
+  .form-head p {
+    font-size: 12.5px;
+    margin-bottom: 16px;
+  }
+  .form-row-2 {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .map-iframe-wrap {
+    height: 180px;
+  }
+  .map-live-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .map-directions-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --- Footer Mobile --- */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 36px;
+  }
+  .footer-desc {
+    max-width: 100%;
+  }
   .footer-bottom-bar {
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 12px;
   }
-  .footer-grid {
-    gap: 30px;
+}
+
+/* --- Typewriter Modal Mobile --- */
+@media (max-width: 600px) {
+  .typewriter-modal-backdrop {
+    padding: 8px;
+    align-items: flex-end;
   }
-  .footer-section {
-    padding: 50px 0 20px;
+  .typewriter-modal-container {
+    padding: 20px 16px 24px;
+    border-radius: 20px 20px 12px 12px;
+    max-height: 94vh;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .modal-brand-name {
+    font-size: 20px;
+    gap: 8px;
+  }
+  .modal-header-top {
+    padding-right: 32px;
+    gap: 6px;
+  }
+  .badge-pulse-gold,
+  .free-del-chip {
+    font-size: 9.5px;
+    padding: 3px 8px;
+  }
+  .typewriter-live-box {
+    padding: 9px 11px;
+    margin-bottom: 14px;
+  }
+  .typewriter-typing-text {
+    font-size: 12.5px;
+  }
+  .modal-form-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .modal-guarantee-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    font-size: 10.5px;
+    padding: 6px 10px;
+  }
+  .typewriter-submit-btn {
+    font-size: 13px;
+    padding: 11px 14px;
   }
 }
 
-/* --- Product Modal: fix mobile layout --- */
-@media (max-width: 480px) {
+/* --- Product Quick View Modal Mobile --- */
+@media (max-width: 768px) {
   .modal-backdrop {
     padding: 0;
     align-items: flex-end;
@@ -4312,45 +4621,37 @@ button {
   .modal-container {
     border-radius: 20px 20px 0 0;
     max-height: 96vh;
-    padding: 20px 16px;
+    padding: 20px 14px 28px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .modal-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
   .modal-title {
-    font-size: 21px;
+    font-size: 20px;
+  }
+  .modal-tab-header {
+    gap: 6px;
   }
   .modal-tab {
-    padding: 8px 10px;
-    font-size: 12px;
+    padding: 7px 10px;
+    font-size: 11.5px;
+  }
+  .modal-cta-row {
+    grid-template-columns: 1fr;
   }
 }
 
-/* --- Global: better touch targets for mobile --- */
-@media (max-width: 768px) {
-  .nav-icon-btn,
-  .nav-cart-btn,
-  .mobile-menu-btn {
-    min-width: 42px;
-    min-height: 42px;
-  }
-  /* Prevent horizontal overflow on any child element */
-  .hero-section,
-  .catalog-section,
-  .craft-section,
-  .testimonials-section,
-  .faq-section,
-  .contact-section,
-  .free-delivery-section,
-  .visualizer-section {
-    overflow-x: hidden;
-  }
-}
-
-/* --- Floating WhatsApp button: move up on mobile to avoid overlapping footer --- */
+/* --- Floating WhatsApp Button Mobile --- */
 @media (max-width: 768px) {
   .wa-float-btn {
-    bottom: 18px;
-    right: 18px;
-    width: 52px;
-    height: 52px;
+    bottom: 16px;
+    right: 16px;
+    width: 50px;
+    height: 50px;
   }
 }
+
 

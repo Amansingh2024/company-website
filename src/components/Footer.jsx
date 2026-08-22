@@ -62,7 +62,7 @@ export default function Footer({ onSelectCategory }) {
             <ul className="footer-links">
               <li><a href="#collections" onClick={() => onSelectCategory('beds')}>Maharaja Grand Sheesham</a></li>
               <li><a href="#collections" onClick={() => onSelectCategory('beds')}>Aura Velvet Floating Bed</a></li>
-              <li><a href="#collections" onClick={() => onSelectCategory('beds')}>Kanha Burma Teak Canopy</a></li>
+              <li><a href="#collections" onClick={() => onSelectCategory('beds')}>Burma Teak Canopy</a></li>
               <li><a href="#collections" onClick={() => onSelectCategory('beds')}>Vivaan Hydraulic Storage</a></li>
               <li><a href="#collections" onClick={() => onSelectCategory('beds')}>Anaya Channel Boucle Bed</a></li>
               <li><a href="#collections" onClick={() => onSelectCategory('beds')}>Ishita Brass Inlay Bed</a></li>
@@ -73,7 +73,7 @@ export default function Footer({ onSelectCategory }) {
           <div className="footer-nav-col">
             <h4 className="footer-col-title">Sofas &amp; Electronics</h4>
             <ul className="footer-links">
-              <li><a href="#collections" onClick={() => onSelectCategory('sofas')}>Kanha Royal Chesterfield</a></li>
+              <li><a href="#collections" onClick={() => onSelectCategory('sofas')}>Royal Chesterfield</a></li>
               <li><a href="#collections" onClick={() => onSelectCategory('sofas')}>Ganesh Modular L-Shape</a></li>
               <li><a href="#collections" onClick={() => onSelectCategory('sofas')}>Meera Emerald Velvet 3S</a></li>
               <li><a href="#collections" onClick={() => onSelectCategory('electronics')}>Sony Bravia 4K 65" TV</a></li>

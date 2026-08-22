@@ -34,8 +34,8 @@ export default function CartDrawer({
       (customerName ? `*Name:* ${customerName}\n` : '') +
       (customerPincode ? `*Delivery Pincode:* ${customerPincode}\n` : '') +
       `\n*SELECTED CREATIONS (${cartItems.length}):*\n${itemsListText}\n` +
-      (customNote ? `\n*Customization / Size Requirement:* ${customNote}\n` : '') +
-      `\nPlease share the best workshop price quote, available discounts, and delivery slot.`
+      (customNote ? `\n*Additional Notes:* ${customNote}\n` : '') +
+      `\nPlease share the best workshop price quote and delivery slot.`
     );
 
     window.open(`https://wa.me/919876543210?text=${msg}`, '_blank');
@@ -89,7 +89,7 @@ export default function CartDrawer({
                     <span className="cart-item-cat">{item.categoryName}</span>
                     <h4 className="cart-item-title">{item.name}</h4>
                     <span className="cart-item-quote-tag">
-                      <Ruler size={12} className="text-brass" /> Custom Sizing Available
+                      Item Details Available
                     </span>
 
                     {/* Quantity controls */}
@@ -136,10 +136,10 @@ export default function CartDrawer({
             {/* Customizer Notes Box */}
             <div className="cart-custom-box">
               <label className="custom-box-label">
-                <Sparkles size={13} /> Custom Sizing &amp; Material Preferences:
+                <Sparkles size={13} /> Additional Notes:
               </label>
               <textarea
-                placeholder="E.g. Room dimensions, preference for dark walnut sheesham or Burma teak, fabric color..."
+                placeholder="E.g. Any special requirements or preferences..."
                 value={customNote}
                 onChange={(e) => setCustomNote(e.target.value)}
                 className="cart-textarea"

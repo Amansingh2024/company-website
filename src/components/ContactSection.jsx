@@ -111,7 +111,7 @@ export default function ContactSection() {
           <div className="contact-form-col">
             <div className="quote-form-card">
               <div className="form-head">
-                <h3>Request a Custom Quote</h3>
+                <h3>Get in Touch with Our Showroom</h3>
                 <p>Tell us what your home needs — we'll calculate exact pricing and message you in 15 minutes.</p>
               </div>
 

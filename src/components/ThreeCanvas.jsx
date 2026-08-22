@@ -528,7 +528,7 @@ export default function ThreeCanvas({ initialModel = 'bed' }) {
             className={`model-pill ${modelType === 'sofa' ? 'active' : ''}`}
             onClick={() => { playClick(); setModelType('sofa'); }}
           >
-            <Box size={14} /> Kanha Sofa 3D
+            <Box size={14} /> Luxury Sofa 3D
           </button>
         </div>
 

@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingBag, MessageCircle, Volume2, VolumeX, Menu, X, BedDouble, Armchair, Tv, Sparkles, Box } from 'lucide-react';
+import { MessageCircle, Volume2, VolumeX, Menu, X, BedDouble, Armchair, Tv, Sparkles, Box } from 'lucide-react';
 import { toggleSound, isSoundEnabled, playClick } from '../utils/audio';
 
 export default function Navbar({ 
-  cartCount, 
-  onOpenCart, 
   onSelectCategory,
   onOpenVideo 
 }) {
@@ -76,16 +74,6 @@ export default function Navbar({
               aria-label="Toggle UI Sounds"
             >
               {soundOn ? <Volume2 size={18} /> : <VolumeX size={18} />}
-            </button>
-
-            {/* Quote Cart Button */}
-            <button 
-              className="nav-cart-btn"
-              onClick={() => { playClick(); onOpenCart(); }}
-              aria-label="Open Quote Cart"
-            >
-              <ShoppingBag size={18} />
-              <span className="cart-badge">{cartCount}</span>
             </button>
 
             {/* Direct WhatsApp Call */}

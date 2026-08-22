@@ -88,7 +88,7 @@ export default function Hero3D({ onOpenVideoModal, onSelectCategory }) {
               </div>
               <div className="guarantee-item">
                 <Award size={16} className="text-brass" />
-                <span>Custom Sizing &amp; Direct Counter Rates</span>
+                <span>Direct Workshop Rates</span>
               </div>
             </div>
           </div>

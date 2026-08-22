@@ -15,7 +15,7 @@ export default function Testimonials() {
       name: 'Sunita & Alok Verma',
       location: 'Near Dariyapur Bazar',
       rating: 5,
-      product: 'Kanha Chesterfield 3-Seater Sofa',
+      product: 'Chesterfield 3-Seater Sofa',
       text: 'The deep button tufting and leatherette quality is comparable to luxury brands charging 3x more. The master karigars customized the dimensions to fit our living room bay window perfectly!',
       avatar: 'S'
     },

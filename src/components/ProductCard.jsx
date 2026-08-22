@@ -1,12 +1,10 @@
 import React, { useRef, useState } from 'react';
-import { Eye, ShoppingCart, MessageCircle, Star, Sparkles, Check, ArrowUpRight, Box, Ruler } from 'lucide-react';
+import { Eye, MessageCircle, Star, Sparkles, ArrowUpRight, Box, Ruler, Play } from 'lucide-react';
 import { playHover, playClick, playPop } from '../utils/audio';
 
 export default function ProductCard({ 
   product, 
-  onQuickView, 
-  onAddToCart, 
-  isInCart 
+  onQuickView
 }) {
   const cardRef = useRef(null);
   const [tiltStyle, setTiltStyle] = useState({});
@@ -50,7 +48,7 @@ export default function ProductCard({
     e.stopPropagation();
     playClick();
     const message = encodeURIComponent(
-      `Namaste Vishwakarma Furniture & Electronics! 🌸\n\nI am interested in getting the price quote for:\n*Product:* ${product.name}\n*Category:* ${product.categoryName}\n*Product ID:* ${product.id}\n\nPlease share latest price, available size customizations, and delivery timeline to my pincode.`
+      `Namaste Vishwakarma Furniture & Electronics! 🌸\n\nI am interested in getting the price quote for:\n*Product:* ${product.name}\n*Category:* ${product.categoryName}\n*Product ID:* ${product.id}\n\nPlease share the latest price and delivery timeline to my pincode.`
     );
     window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
   };
@@ -84,7 +82,7 @@ export default function ProductCard({
               </span>
             )}
             <span className="p3d-badge discount">Direct Workshop</span>
-            {product.is3DAvailable && (
+            {product.category === 'beds' && product.is3DAvailable && (
               <span className="p3d-badge three-d">
                 <Box size={11} /> 3D View
               </span>
@@ -111,7 +109,7 @@ export default function ProductCard({
 
           {/* Hover Quick View Overlay Action */}
           <div className="p3d-quickview-overlay">
-            <button 
+            <button
               className="quickview-pill"
               onClick={(e) => {
                 e.stopPropagation();
@@ -122,6 +120,21 @@ export default function ProductCard({
               <Eye size={15} /> <span>3D Quick View</span>
             </button>
           </div>
+
+          {/* Video Play Button */}
+          {product.category === 'beds' && product.video3D && (
+            <button 
+              className="p3d-video-button"
+              onClick={(e) => {
+                e.stopPropagation();
+                playClick();
+                onQuickView(product);
+              }}
+              title="Play 3D Product Video"
+            >
+              <Play size={28} fill="white" />
+            </button>
+          )}
         </div>
 
         {/* Card Body */}
@@ -151,38 +164,15 @@ export default function ProductCard({
             <span>{product.material.split('&')[0]}</span>
           </div>
 
-          {/* Quote & Custom Sizing Block (No Price) */}
+          {/* Price Block */}
           <div className="p3d-price-block">
             <div className="quote-status-row">
-              <span className="quote-status-badge">
-                <Ruler size={13} className="text-brass" /> Custom Size Available
-              </span>
-              <span className="quote-status-sub">Price On Request</span>
+              <span className="quote-status-sub">Contact for Latest Price</span>
             </div>
           </div>
 
           {/* Action Buttons */}
           <div className="p3d-actions">
-            <button 
-              className={`p3d-cart-btn ${isInCart ? 'in-cart' : ''}`}
-              onClick={(e) => {
-                e.stopPropagation();
-                playPop();
-                onAddToCart(product);
-              }}
-              title={isInCart ? "Already in Quote list" : "Add to Quote Cart"}
-            >
-              {isInCart ? (
-                <>
-                  <Check size={16} /> Added
-                </>
-              ) : (
-                <>
-                  <ShoppingCart size={15} /> Add to Quote
-                </>
-              )}
-            </button>
-
             <button 
               className="p3d-wa-btn"
               onClick={handleWhatsAppInquiry}

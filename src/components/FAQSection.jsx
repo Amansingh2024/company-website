@@ -28,7 +28,7 @@ export default function FAQSection() {
     },
     {
       q: 'How can I get an instant price quote and inspect items before delivery?',
-      a: 'You can add any product to your custom quote list or tap "Get Quote on WhatsApp". Our senior showroom manager at Dariyapur Bazar will immediately send you high-definition video walkthroughs, wood cross-section photos, and the best direct workshop quotation.',
+      a: 'Tap "Get Quote on WhatsApp" for any product. Our senior showroom manager at Dariyapur Bazar will immediately send you high-definition video walkthroughs, wood cross-section photos, and the best direct workshop quotation.',
       icon: <PhoneCall size={18} className="text-brass" />
     }
   ];
@@ -51,7 +51,7 @@ export default function FAQSection() {
             <em>About Our Quality &amp; Process.</em>
           </h2>
           <p className="section-subtitle">
-            Clear answers about timber seasoning, custom sizing, showroom visits in Dariyapur Bazar, and direct workshop ordering.
+            Clear answers about timber seasoning, showroom visits in Dariyapur Bazar, and direct workshop ordering.
           </p>
         </div>
 

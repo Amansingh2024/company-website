@@ -13,50 +13,12 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import ProductModal from './components/ProductModal';
 import CinematicVideoModal from './components/CinematicVideoModal';
-import CartDrawer from './components/CartDrawer';
 import { MessageCircle } from 'lucide-react';
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [activeModalProduct, setActiveModalProduct] = useState(null);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
-
-  // Cart Handlers
-  const handleAddToCart = (product) => {
-    setCartItems((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
-      if (existing) {
-        return prev.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
-      }
-      return [...prev, { ...product, quantity: 1 }];
-    });
-  };
-
-  const handleUpdateQuantity = (productId, newQuantity) => {
-    if (newQuantity <= 0) {
-      handleRemoveFromCart(productId);
-      return;
-    }
-    setCartItems((prev) =>
-      prev.map((item) =>
-        item.id === productId ? { ...item, quantity: newQuantity } : item
-      )
-    );
-  };
-
-  const handleRemoveFromCart = (productId) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== productId));
-  };
-
-  const handleClearCart = () => {
-    setCartItems([]);
-  };
-
-  const totalCartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   const handleCategoryChange = (catId) => {
     setSelectedCategory(catId);
@@ -71,10 +33,8 @@ function App() {
       {/* Luxury Wood Grain Film Effect */}
       <div className="luxury-grain-overlay" />
 
-      {/* Top Navbar with sound & cart */}
+      {/* Top Navbar with sound */}
       <Navbar
-        cartCount={totalCartCount}
-        onOpenCart={() => setIsCartOpen(true)}
         onSelectCategory={handleCategoryChange}
         onOpenVideo={() => setIsVideoModalOpen(true)}
       />
@@ -93,8 +53,6 @@ function App() {
         selectedCategory={selectedCategory}
         onSelectCategory={setSelectedCategory}
         onQuickView={(product) => setActiveModalProduct(product)}
-        onAddToCart={handleAddToCart}
-        cartItems={cartItems}
       />
 
       {/* Workshop Craftsmanship Heritage */}
@@ -117,8 +75,6 @@ function App() {
         <ProductModal
           product={activeModalProduct}
           onClose={() => setActiveModalProduct(null)}
-          onAddToCart={handleAddToCart}
-          isInCart={cartItems.some((item) => item.id === activeModalProduct.id)}
         />
       )}
 
@@ -126,16 +82,6 @@ function App() {
       <CinematicVideoModal
         isOpen={isVideoModalOpen}
         onClose={() => setIsVideoModalOpen(false)}
-      />
-
-      {/* Custom Quote & Order Drawer */}
-      <CartDrawer
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        cartItems={cartItems}
-        onUpdateQuantity={handleUpdateQuantity}
-        onRemoveItem={handleRemoveFromCart}
-        onClearCart={handleClearCart}
       />
 
       {/* Floating WhatsApp Action Button */}

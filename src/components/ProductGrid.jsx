@@ -7,9 +7,7 @@ import { playClick, playPop } from '../utils/audio';
 export default function ProductGrid({ 
   selectedCategory, 
   onSelectCategory, 
-  onQuickView, 
-  onAddToCart, 
-  cartItems 
+  onQuickView
 }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('popular'); // 'popular' | 'rating' | 'name-asc'
@@ -53,10 +51,6 @@ export default function ProductGrid({
       return 0;
     });
   }, [selectedCategory, searchQuery, sortBy, filterBestsellerOnly]);
-
-  const cartIdSet = useMemo(() => {
-    return new Set(cartItems.map(item => item.id));
-  }, [cartItems]);
 
   return (
     <section className="catalog-section" id="collections">
@@ -168,8 +162,6 @@ export default function ProductGrid({
                 key={product.id}
                 product={product}
                 onQuickView={onQuickView}
-                onAddToCart={onAddToCart}
-                isInCart={cartIdSet.has(product.id)}
               />
             ))}
           </div>

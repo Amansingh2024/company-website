@@ -41,11 +41,12 @@ export default function Navbar({
           {/* Desktop Navigation Links */}
           <nav className="desktop-nav-links">
             <a href="#home" onClick={() => playClick()}>Home</a>
+            <a href="#free-delivery" className="nav-highlight-link" onClick={() => playClick()}>Free Delivery</a>
             <a 
               href="#collections" 
               onClick={() => { playClick(); onSelectCategory('beds'); }}
             >
-              Beds (6)
+              Beds (9)
             </a>
             <a 
               href="#collections" 

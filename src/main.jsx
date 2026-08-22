@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles/theme.css';
 
 import Navbar from './components/Navbar';
 import Hero3D from './components/Hero3D';
+import FreeDeliverySection from './components/FreeDeliverySection';
 import ProductGrid from './components/ProductGrid';
 import RoomVisualizer from './components/RoomVisualizer';
 import Craftsmanship from './components/Craftsmanship';
@@ -13,12 +14,25 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import ProductModal from './components/ProductModal';
 import CinematicVideoModal from './components/CinematicVideoModal';
-import { MessageCircle } from 'lucide-react';
+import TypewriterModal from './components/TypewriterModal';
+import { MessageCircle, Sparkles } from 'lucide-react';
+import { playChime } from './utils/audio';
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [activeModalProduct, setActiveModalProduct] = useState(null);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [isTypewriterModalOpen, setIsTypewriterModalOpen] = useState(false);
+
+  // Automatically open the Typewriter Consultation Form on website visit
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsTypewriterModalOpen(true);
+      playChime();
+    }, 1200);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleCategoryChange = (catId) => {
     setSelectedCategory(catId);
@@ -39,10 +53,16 @@ function App() {
         onOpenVideo={() => setIsVideoModalOpen(true)}
       />
 
-      {/* Hero Section with Three.js 3D Studio Stage */}
+      {/* Hero Section with Three.js 3D Studio Stage & Live Typewriter */}
       <Hero3D
         onOpenVideoModal={() => setIsVideoModalOpen(true)}
         onSelectCategory={handleCategoryChange}
+        onOpenTypewriterModal={() => setIsTypewriterModalOpen(true)}
+      />
+
+      {/* Free Delivery Promise Section (500 KM radius showcase like Kanha) */}
+      <FreeDeliverySection 
+        onOpenTypewriterModal={() => setIsTypewriterModalOpen(true)}
       />
 
       {/* Interactive 3D Room Visualizer */}
@@ -64,11 +84,17 @@ function App() {
       {/* Interactive FAQ Section */}
       <FAQSection />
 
-      {/* Showroom Map & Instant WhatsApp Quote Booking (Dariyapur Bazar) */}
+      {/* Showroom Map & Instant WhatsApp Quote Booking (Patna Location) */}
       <ContactSection />
 
       {/* Footer */}
       <Footer onSelectCategory={handleCategoryChange} />
+
+      {/* Welcome Typewriter Quote & Booking Modal (Opens on load) */}
+      <TypewriterModal 
+        isOpen={isTypewriterModalOpen}
+        onClose={() => setIsTypewriterModalOpen(false)}
+      />
 
       {/* Product Quick-View 3D Modal */}
       {activeModalProduct && (

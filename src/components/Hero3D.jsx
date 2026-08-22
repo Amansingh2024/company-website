@@ -1,29 +1,132 @@
-import React from 'react';
-import { Sparkles, Play, Shield, Truck, Award, ArrowRight, Box, BedDouble, Armchair, Tv } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Sparkles, Play, Shield, Truck, Award, ArrowRight, Box, BedDouble, Armchair, Tv, MessageCircle } from 'lucide-react';
 import ThreeCanvas from './ThreeCanvas';
 import { playClick, playHover } from '../utils/audio';
 
-export default function Hero3D({ onOpenVideoModal, onSelectCategory }) {
+const HERO_TYPEWRITER_WORDS = [
+  "Solid Sheesham & Teak Wood Beds",
+  "Handcrafted Italian Velvet Sofas",
+  "Top-Tier Smart Home Electronics",
+  "Direct Factory Workshop in Bihar",
+  "Free Delivery & Setup Up to 500 KM"
+];
+
+const FLOATING_TAGS = [
+  { text: "✦ Solid Sheesham Beds", top: "18%", left: "4%", delay: "0s" },
+  { text: "✦ Chesterfield Sofas", top: "68%", left: "6%", delay: "-3s" },
+  { text: "✦ 4K OLED Smart TVs", top: "22%", right: "6%", delay: "-1.5s" },
+  { text: "✦ Free 500 KM Delivery", top: "72%", right: "8%", delay: "-4.5s" }
+];
+
+const MARQUEE_ITEMS = [
+  "Vishwakarma Furniture",
+  "Free Delivery Up to 500 KM",
+  "Bihar",
+  "Jharkhand",
+  "Uttar Pradesh",
+  "Nepal",
+  "Solid Sheesham & Teak",
+  "10-Year Wood Warranty",
+  "Smart 4K TVs",
+  "Direct Workshop Prices",
+  "Grand 3D Showroom"
+];
+
+export default function Hero3D({ onOpenVideoModal, onSelectCategory, onOpenTypewriterModal }) {
+  const [typedText, setTypedText] = useState('');
+  const [wordIndex, setWordIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(70);
+
+  useEffect(() => {
+    const currentWord = HERO_TYPEWRITER_WORDS[wordIndex];
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        setTypedText(currentWord.substring(0, typedText.length + 1));
+        if (typedText.length === currentWord.length) {
+          setTimeout(() => setIsDeleting(true), 2000);
+          setTypingSpeed(110);
+        } else {
+          setTypingSpeed(45);
+        }
+      } else {
+        setTypedText(currentWord.substring(0, typedText.length - 1));
+        if (typedText.length === 0) {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % HERO_TYPEWRITER_WORDS.length);
+          setTypingSpeed(80);
+        } else {
+          setTypingSpeed(25);
+        }
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [typedText, isDeleting, wordIndex, typingSpeed]);
+
   return (
     <section className="hero-section" id="home">
       {/* Background ambient lighting orbs */}
       <div className="hero-glow-orb orb-primary" />
       <div className="hero-glow-orb orb-secondary" />
 
+      {/* Floating Category Tags in Background */}
+      <div className="hero-floating-tags-layer" aria-hidden="true">
+        {FLOATING_TAGS.map((tag, i) => (
+          <span 
+            key={i} 
+            className="hero-floating-tag"
+            style={{ 
+              top: tag.top, 
+              left: tag.left, 
+              right: tag.right,
+              animationDelay: tag.delay 
+            }}
+          >
+            {tag.text}
+          </span>
+        ))}
+      </div>
+
       <div className="container">
         <div className="hero-layout">
-          {/* Left Column: Headlines & CTAs */}
+          {/* Left Column: Headlines & Typewriter CTAs */}
           <div className="hero-text-col">
+            {/* Launch Badge */}
             <div className="hero-eyebrow">
-              <span className="eyebrow-line" />
-              <span className="eyebrow-text">Heritage Craftsmanship · Dariyapur Bazar, Bihar</span>
+              <span className="live-pulse-dot" />
+              <span className="eyebrow-text">Heritage Craftsmanship · Patna &amp; Dariyapur, Bihar</span>
               <Sparkles size={14} className="eyebrow-sparkle" />
             </div>
 
-            <h1 className="hero-title">
-              Crafted with Divine <br />
-              <span className="gold-shimmer-text">Vishwakarma</span> Precision.
-            </h1>
+            {/* Staggered Brand Identity */}
+            <div className="hero-brand-stagger">
+              <div className="brand-letter-row">
+                {"VISHWAKARMA".split('').map((letter, idx) => (
+                  <span 
+                    key={idx} 
+                    className="brand-letter-span"
+                    style={{ animationDelay: `${0.05 * idx}s` }}
+                  >
+                    {letter}
+                  </span>
+                ))}
+              </div>
+              <div className="brand-sub-badge-row">
+                <span className="gold-line" />
+                <span className="company-badge-tag">DIRECT WORKSHOP</span>
+                <span className="gold-line" />
+              </div>
+            </div>
+
+            {/* Live Typewriter Hero Headline */}
+            <div className="hero-typewriter-display">
+              <span className="typewriter-prefix">We manufacture &amp; deliver:</span>
+              <h2 className="typewriter-headline">
+                <span className="gold-shimmer-text">{typedText}</span>
+                <span className="hero-cursor-blink">|</span>
+              </h2>
+            </div>
 
             <p className="hero-lead">
               Solid Sheesham &amp; Burma Teak beds, handcrafted sofas, and high-performance smart electronics. Built for Indian homes that value generational longevity over disposable furniture.
@@ -31,15 +134,14 @@ export default function Hero3D({ onOpenVideoModal, onSelectCategory }) {
 
             {/* CTA Buttons */}
             <div className="hero-btn-row">
-              <a 
-                href="#collections" 
+              <button 
                 className="btn-luxury-primary"
-                onClick={() => { playClick(); }}
+                onClick={() => { playClick(); onOpenTypewriterModal(); }}
                 onMouseEnter={() => playHover()}
               >
-                <span>Explore 25+ Creations</span>
-                <ArrowRight size={18} />
-              </a>
+                <Sparkles size={18} />
+                <span>Get Instant Workshop Quote</span>
+              </button>
 
               <button 
                 className="btn-luxury-glass"
@@ -55,7 +157,7 @@ export default function Hero3D({ onOpenVideoModal, onSelectCategory }) {
 
             {/* Quick Category Jump Badges */}
             <div className="hero-quick-chips">
-              <span className="quick-chip-label">Quick Jump:</span>
+              <span className="quick-chip-label">Explore:</span>
               <button 
                 className="quick-chip"
                 onClick={() => { playClick(); onSelectCategory('beds'); }}
@@ -74,6 +176,13 @@ export default function Hero3D({ onOpenVideoModal, onSelectCategory }) {
               >
                 <Tv size={14} /> 8 Smart Electronics
               </button>
+              <a 
+                href="#free-delivery" 
+                className="quick-chip highlight-chip"
+                onClick={() => playClick()}
+              >
+                <Truck size={14} /> Free 500 KM Delivery
+              </a>
             </div>
 
             {/* Key Trust Highlights */}
@@ -107,6 +216,19 @@ export default function Hero3D({ onOpenVideoModal, onSelectCategory }) {
           </div>
         </div>
       </div>
+
+      {/* Bottom Live Continuous Gold Marquee Ticker */}
+      <div className="hero-ticker-track" aria-hidden="true">
+        <div className="hero-ticker-content">
+          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, index) => (
+            <span key={index} className="ticker-item">
+              <span className="ticker-text">{item}</span>
+              <span className="ticker-sparkle">✦</span>
+            </span>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
+

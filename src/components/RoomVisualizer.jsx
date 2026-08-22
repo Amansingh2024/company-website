@@ -5,13 +5,13 @@ import { playClick, playPop } from '../utils/audio';
 // ── Dynamic finish variants per room tab ─────────────────────────────────────
 const ROOM_VARIANTS = {
   bedroom: {
-    baseImage: 'https://images.unsplash.com/photo-1731336250970-dc942b5e0746?auto=format&fit=crop&w=1200&q=85',
     walnut: {
       label: 'Dark Walnut Sheesham',
       sublabel: 'Royal classic finish',
       swatch: '#4a2411',
       badge: 'King Size Sheesham · Dark Walnut',
       title: 'Master Bedroom Suite 3D',
+      image: '/images/luxury-bed-day.png',
       productsIncluded: ['Maharaja Grand Sheesham King Bed', '2x Floating Nightstands', 'Comfort Ortho Mattress'],
       statusTag: 'Custom Made-to-Measure',
       warranty: '10-Year Warranty',
@@ -24,6 +24,7 @@ const ROOM_VARIANTS = {
       swatch: '#8a5229',
       badge: 'Royal Canopy Bed · Burma Teak Gold',
       title: 'Heritage Bedroom Suite 3D',
+      image: '/images/infinite-canopy-bed.png',
       productsIncluded: ['Royal Teakwood Poster Canopy Bed', '2x Brass Lamp Nightstands', 'Luxury Wool Mattress'],
       statusTag: 'Heritage Handcrafted',
       warranty: 'Lifetime Termite + 15-Year Frame',
@@ -36,6 +37,7 @@ const ROOM_VARIANTS = {
       swatch: '#175c4c',
       badge: 'Velvet Floating Bed · Emerald Glow',
       title: 'Jewel Bedroom Suite 3D',
+      image: '/images/luxury-bed-night.png',
       productsIncluded: ['Aura Velvet Floating King Bed', '2x Velvet Ottoman Benches', 'Smart Ambient LED Lighting'],
       statusTag: 'Velvet Upholstery Edition',
       warranty: '5-Year Frame & Foam',
@@ -44,13 +46,13 @@ const ROOM_VARIANTS = {
     },
   },
   living: {
-    baseImage: 'https://images.unsplash.com/photo-1573866926487-a1865558a9cf?auto=format&fit=crop&w=1200&q=85',
     walnut: {
       label: 'Saddle Brown Leather',
       sublabel: 'Classic Chesterfield tone',
       swatch: '#6b3a1f',
       badge: 'Royal Chesterfield 3-Seater · Brown Leather',
       title: 'Royal Living Room Lounge',
+      image: 'https://images.unsplash.com/photo-1573866926487-a1865558a9cf?auto=format&fit=crop&w=1200&q=85',
       productsIncluded: ['Royal Chesterfield 3-Seater', 'Teakwood Coffee Table', 'Solid Brass Floor Lamp'],
       statusTag: 'Leather Finish Edition',
       warranty: '5-Year Frame & Foam',
@@ -63,6 +65,7 @@ const ROOM_VARIANTS = {
       swatch: '#c9a97a',
       badge: 'Radha Loveseat 2-Seater · Belgian Linen',
       title: 'Scandinavian Living Room',
+      image: 'https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=1200&q=85',
       productsIncluded: ['Radha Scandinavian Loveseat', 'Minimal Solid Oak Coffee Table', 'Rattan Side Armchair'],
       statusTag: 'Custom Upholstery Colors',
       warranty: '5-Year Structural Warranty',
@@ -75,6 +78,7 @@ const ROOM_VARIANTS = {
       swatch: '#175c4c',
       badge: 'Meera Emerald 3-Seater · Velvet',
       title: 'Jewel Living Room Suite',
+      image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=85',
       productsIncluded: ['Meera Emerald Velvet 3-Seater', 'Gold Plinth Ottoman', 'Brushed Gold Side Table'],
       statusTag: 'Jewel Velvet Edition',
       warranty: '5-Year Anti-Sag Guarantee',
@@ -149,16 +153,10 @@ export default function RoomVisualizer({ onSelectCategory }) {
             {/* Visual Canvas Area */}
             <div className="vis-viewport" style={{ backgroundColor: wallColor }}>
               <img
-                key={activeRoom}
-                src={room.baseImage}
-                alt={variant.title}
-                className="vis-image"
-              />
-              <div
                 key={`${activeRoom}-${finish}`}
-                className={`vis-finish-tint vis-finish-tint--${activeRoom} vis-image-fade`}
-                style={{ '--finish-color': variant.swatch }}
-                aria-hidden="true"
+                src={variant.image}
+                alt={variant.title}
+                className="vis-image vis-image-fade"
               />
               <div className="vis-room-badge">
                 <span className="live-dot" />

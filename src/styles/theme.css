@@ -1485,25 +1485,6 @@ button {
   object-fit: cover;
 }
 
-/* Keep the room composition fixed while previewing each selected finish. */
-.vis-finish-tint {
-  position: absolute;
-  inset: 0;
-  background: var(--finish-color);
-  mix-blend-mode: color;
-  opacity: 0.72;
-  pointer-events: none;
-}
-.vis-finish-tint--bedroom {
-  /* The bed is centered through the lower half of the bedroom render. */
-  -webkit-mask-image: radial-gradient(ellipse 54% 36% at 50% 68%, #000 0 56%, transparent 100%);
-  mask-image: radial-gradient(ellipse 54% 36% at 50% 68%, #000 0 56%, transparent 100%);
-}
-.vis-finish-tint--living {
-  /* Keep walls, windows and flooring unchanged; colour only the sofa zone. */
-  -webkit-mask-image: radial-gradient(ellipse 56% 35% at 50% 70%, #000 0 58%, transparent 100%);
-  mask-image: radial-gradient(ellipse 56% 35% at 50% 70%, #000 0 58%, transparent 100%);
-}
 .vis-image-fade {
   animation: visFadeIn 0.4s ease;
 }

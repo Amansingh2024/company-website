@@ -6,21 +6,11 @@ import { playClick, playPop, playChime } from '../utils/audio';
 // ── Auto-generate side & back view from first image via Unsplash crop params ──
 function buildImageSet(images) {
   if (!images || images.length === 0) return [];
-  const base = images[0];
-
-  const addCrop = (url, cropVal) => {
-    // Remove any existing crop param
-    const cleaned = url.replace(/[&?]crop=[^&]*/g, '');
-    const sep = cleaned.includes('?') ? '&' : '?';
-    return `${cleaned}${sep}crop=${cropVal}&fit=crop`;
-  };
-
-  return [
-    { url: base,                       label: 'Front View' },
-    { url: addCrop(base, 'left'),      label: 'Side View'  },
-    { url: addCrop(base, 'entropy'),   label: 'Detail View'},
-    ...images.slice(1).map((url, i) => ({ url, label: `View ${i + 4}` })),
-  ];
+  const labels = ['Front View', 'Side View', 'Back View'];
+  return images.slice(0, 3).map((url, index) => ({
+    url,
+    label: labels[index],
+  }));
 }
 
 export default function ProductModal({ product, onClose }) {

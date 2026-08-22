@@ -7,6 +7,7 @@ export default function ProductCard({
   onQuickView
 }) {
   const cardRef = useRef(null);
+  const galleryImages = product.images.slice(0, 3);
   const [tiltStyle, setTiltStyle] = useState({});
   const [sheenStyle, setSheenStyle] = useState({ opacity: 0 });
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -68,7 +69,7 @@ export default function ProductCard({
         {/* Media Container */}
         <div className="p3d-media" onClick={() => onQuickView(product)}>
           <img 
-            src={product.images[activeImageIndex] || product.images[0]} 
+            src={galleryImages[activeImageIndex] || galleryImages[0]}
             alt={product.name}
             loading="lazy"
             className="p3d-image"
@@ -90,9 +91,9 @@ export default function ProductCard({
           </div>
 
           {/* Fast Image dots if multiple */}
-          {product.images.length > 1 && (
+          {galleryImages.length > 1 && (
             <div className="p3d-dots" onClick={(e) => e.stopPropagation()}>
-              {product.images.map((_, idx) => (
+              {galleryImages.map((_, idx) => (
                 <button
                   key={idx}
                   className={`p3d-dot ${activeImageIndex === idx ? 'active' : ''}`}
@@ -101,7 +102,7 @@ export default function ProductCard({
                     playPop();
                     setActiveImageIndex(idx);
                   }}
-                  aria-label={`View photo ${idx + 1}`}
+                  aria-label={['Front View', 'Side View', 'Back View'][idx]}
                 />
               ))}
             </div>

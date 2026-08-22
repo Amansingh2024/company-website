@@ -1,13 +1,14 @@
 import React, { useRef, useState } from 'react';
 import { Eye, MessageCircle, Star, Sparkles, ArrowUpRight, Box, Ruler, Play } from 'lucide-react';
 import { playHover, playClick, playPop } from '../utils/audio';
+import { getProductViews } from '../utils/productViews';
 
 export default function ProductCard({ 
   product, 
   onQuickView
 }) {
   const cardRef = useRef(null);
-  const galleryImages = product.images.slice(0, 3);
+  const galleryViews = getProductViews(product);
   const [tiltStyle, setTiltStyle] = useState({});
   const [sheenStyle, setSheenStyle] = useState({ opacity: 0 });
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -69,7 +70,7 @@ export default function ProductCard({
         {/* Media Container */}
         <div className="p3d-media" onClick={() => onQuickView(product)}>
           <img 
-            src={galleryImages[activeImageIndex] || galleryImages[0]}
+            src={galleryViews[activeImageIndex]?.url || galleryViews[0]?.url}
             alt={product.name}
             loading="lazy"
             className="p3d-image"
@@ -91,9 +92,9 @@ export default function ProductCard({
           </div>
 
           {/* Fast Image dots if multiple */}
-          {galleryImages.length > 1 && (
+          {galleryViews.length > 1 && (
             <div className="p3d-dots" onClick={(e) => e.stopPropagation()}>
-              {galleryImages.map((_, idx) => (
+              {galleryViews.map((view, idx) => (
                 <button
                   key={idx}
                   className={`p3d-dot ${activeImageIndex === idx ? 'active' : ''}`}
@@ -102,7 +103,7 @@ export default function ProductCard({
                     playPop();
                     setActiveImageIndex(idx);
                   }}
-                  aria-label={['Front View', 'Side View', 'Back View'][idx]}
+                  aria-label={view.label}
                 />
               ))}
             </div>

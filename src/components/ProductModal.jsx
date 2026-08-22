@@ -2,24 +2,16 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { X, Star, ShieldCheck, Truck, RefreshCw, MessageCircle, Sparkles, Ruler, Award, Play, Image as ImageIcon, ChevronLeft, ChevronRight } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { playClick, playPop, playChime } from '../utils/audio';
+import { getProductViews } from '../utils/productViews';
 
 // ── Auto-generate side & back view from first image via Unsplash crop params ──
-function buildImageSet(images) {
-  if (!images || images.length === 0) return [];
-  const labels = ['Front View', 'Side View', 'Back View'];
-  return images.slice(0, 3).map((url, index) => ({
-    url,
-    label: labels[index],
-  }));
-}
-
 export default function ProductModal({ product, onClose }) {
   const [selectedImage, setSelectedImage] = useState(0);
   const [activeTab, setActiveTab]         = useState('specs');
   const [showVideo, setShowVideo]         = useState(false);
   const [paused, setPaused]               = useState(false);
 
-  const imageSet = useMemo(() => buildImageSet(product?.images), [product]);
+  const imageSet = useMemo(() => getProductViews(product), [product]);
 
   // Keyboard shortcuts + body scroll lock
   useEffect(() => {

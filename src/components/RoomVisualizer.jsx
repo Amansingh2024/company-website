@@ -237,16 +237,10 @@ export default function RoomVisualizer({ onSelectCategory }) {
                 </ul>
               </div>
 
-              {/* Quote & WhatsApp Action */}
+              {/* WhatsApp Action */}
               <div className="vis-footer-box">
-                <div className="vis-price-row">
-                  <div>
-                    <span className="price-tag-label">Suite Package</span>
-                    <span className="price-tag-val">Contact for Quote</span>
-                  </div>
-                  <div className="vis-emi-badge">
-                    <span>{variant.statusTag}</span>
-                  </div>
+                <div className="vis-emi-badge">
+                  <span>{variant.statusTag}</span>
                 </div>
 
                 <button 

@@ -531,10 +531,11 @@ button {
 .hero-eyebrow {
   display: flex;
   align-items: center;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--brass-light);
   margin-bottom: 16px;
@@ -656,6 +657,12 @@ button {
   }
   .hero-3d-col {
     order: -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-layout {
+    gap: 24px;
   }
 }
 
@@ -850,6 +857,14 @@ button {
     align-items: flex-start;
     bottom: 25px;
     padding: 8px 12px;
+    overflow-x: hidden;
+  }
+  .studio-group {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .swatch-row {
+    flex-wrap: wrap;
   }
 }
 
@@ -3969,3 +3984,373 @@ button {
   color: var(--brass-light) !important;
   background: rgba(201, 151, 63, 0.12) !important;
 }
+
+/* ==========================================================================
+   COMPREHENSIVE MOBILE ALIGNMENT FIXES (≤768px)
+   ========================================================================== */
+
+/* --- Navbar mobile: prevent brand overflow on tiny screens --- */
+@media (max-width: 480px) {
+  .brand-main-name {
+    font-size: 15px;
+  }
+  .brand-sub-name {
+    font-size: 7.5px;
+    letter-spacing: 0.14em;
+  }
+  .brand-crest {
+    width: 38px;
+    height: 38px;
+    font-size: 17px;
+  }
+  .nav-whatsapp-pill {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+  }
+}
+
+/* --- Hero Section: reduce top/bottom padding on mobile --- */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 110px 0 0;
+  }
+
+  /* Hide floating ambient tags on mobile — they overlap content */
+  .hero-floating-tags-layer {
+    display: none;
+  }
+
+  /* Brand letter row: shrink letters so they fit in one row */
+  .brand-letter-span {
+    font-size: clamp(22px, 8vw, 48px);
+    letter-spacing: 0.03em;
+  }
+
+  /* Keep brand stagger centered-left */
+  .hero-brand-stagger {
+    margin: 8px 0 12px;
+  }
+
+  /* Typewriter display: reduce padding and font */
+  .hero-typewriter-display {
+    padding: 10px 14px;
+    margin: 10px 0 16px;
+  }
+  .typewriter-headline {
+    font-size: clamp(17px, 4.5vw, 28px);
+    min-height: 32px;
+  }
+
+  /* Hero lead text: remove max-width restriction */
+  .hero-lead {
+    font-size: 15.5px;
+    max-width: 100%;
+    margin-bottom: 24px;
+  }
+
+  /* CTA button row: stack on very small screens */
+  .hero-btn-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .btn-luxury-primary,
+  .btn-luxury-glass {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 20px;
+    font-size: 14px;
+  }
+
+  /* Quick chips: tighter sizing */
+  .hero-quick-chips {
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .quick-chip {
+    font-size: 12px;
+    padding: 7px 13px;
+  }
+
+  /* Guarantees: single column */
+  .hero-guarantees {
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 18px;
+  }
+
+  /* 3D canvas height: shorter on mobile for faster load */
+  .three-studio-wrapper {
+    height: 340px;
+  }
+
+  /* Bottom ticker: less margin-top */
+  .hero-ticker-track {
+    margin-top: 32px;
+  }
+}
+
+/* --- General section padding reduction on mobile --- */
+@media (max-width: 768px) {
+  .catalog-section,
+  .craft-section,
+  .faq-section,
+  .contact-section {
+    padding: 64px 0;
+  }
+
+  .visualizer-section,
+  .testimonials-section {
+    padding: 64px 0 72px;
+  }
+
+  .free-delivery-section {
+    padding: 56px 0;
+  }
+
+  .footer-section {
+    padding: 60px 0 24px;
+  }
+}
+
+/* --- Section heads: fix spacing --- */
+@media (max-width: 768px) {
+  .section-head-center {
+    margin-bottom: 36px;
+  }
+  .section-title {
+    font-size: clamp(24px, 6vw, 36px);
+    margin-bottom: 10px;
+  }
+  .section-subtitle {
+    font-size: 14.5px;
+  }
+}
+
+/* --- TypewriterModal: proper mobile padding & layout --- */
+@media (max-width: 600px) {
+  .typewriter-modal-backdrop {
+    padding: 12px;
+    align-items: flex-end;
+  }
+  .typewriter-modal-container {
+    padding: 22px 18px 26px;
+    border-radius: 20px 20px 16px 16px;
+    max-height: 92vh;
+  }
+  .modal-brand-name {
+    font-size: 21px;
+    gap: 8px;
+  }
+  .modal-header-top {
+    padding-right: 30px;
+    gap: 6px;
+  }
+  .badge-pulse-gold,
+  .free-del-chip {
+    font-size: 10px;
+  }
+  .typewriter-live-box {
+    padding: 10px 12px;
+    margin-bottom: 16px;
+  }
+  .typewriter-typing-text {
+    font-size: 13px;
+  }
+  .modal-guarantee-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 11px;
+  }
+  .typewriter-submit-btn {
+    font-size: 13.5px;
+    padding: 12px 16px;
+  }
+}
+
+/* --- Quote Form Card: reduce padding on mobile --- */
+@media (max-width: 768px) {
+  .quote-form-card {
+    padding: 24px 18px;
+  }
+  .form-head h3 {
+    font-size: 20px;
+  }
+}
+
+/* --- Contact Section map height --- */
+@media (max-width: 600px) {
+  .map-iframe-wrap {
+    height: 180px;
+  }
+  .map-live-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+/* --- Visualizer controls panel: reduce padding --- */
+@media (max-width: 768px) {
+  .vis-controls-panel {
+    padding: 20px 18px;
+    gap: 18px;
+  }
+}
+
+/* --- Free Delivery Section: text sizing --- */
+@media (max-width: 480px) {
+  .delivery-giant-title {
+    font-size: clamp(36px, 12vw, 58px);
+  }
+  .delivery-radius-highlight {
+    font-size: clamp(16px, 4.5vw, 24px);
+  }
+  .delivery-lead-sub {
+    font-size: 14px;
+  }
+  .delivery-actions-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .delivery-actions-row .btn-luxury-primary,
+  .delivery-actions-row .btn-luxury-glass {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --- Product Grid: reduce gap on mobile --- */
+@media (max-width: 640px) {
+  .products-grid-3d {
+    gap: 18px;
+  }
+  .p3d-body {
+    padding: 16px;
+  }
+  .p3d-title {
+    font-size: 16.5px;
+  }
+  .p3d-actions {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+}
+
+/* --- Craftsmanship: tighten on mobile --- */
+@media (max-width: 768px) {
+  .craft-grid {
+    gap: 36px;
+  }
+  .craft-lead {
+    font-size: 15.5px;
+    margin-bottom: 22px;
+  }
+  .craft-floating-card {
+    padding: 14px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+  }
+}
+
+/* --- Testimonials grid: gap reduction on mobile --- */
+@media (max-width: 768px) {
+  .testimonials-grid {
+    gap: 18px;
+  }
+  .testi-card-3d {
+    padding: 22px;
+  }
+  .stats-bar-3d {
+    margin-bottom: 36px;
+  }
+  .stat-item-3d {
+    padding: 22px 16px;
+  }
+}
+
+/* --- FAQ: tighten on mobile --- */
+@media (max-width: 768px) {
+  .faq-accordion-wrap {
+    gap: 12px;
+  }
+  .faq-question-btn {
+    padding: 18px 16px;
+  }
+  .faq-q-text {
+    font-size: 15px;
+  }
+}
+
+/* --- Footer: stack bottom bar on mobile --- */
+@media (max-width: 560px) {
+  .footer-bottom-bar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+  .footer-grid {
+    gap: 30px;
+  }
+  .footer-section {
+    padding: 50px 0 20px;
+  }
+}
+
+/* --- Product Modal: fix mobile layout --- */
+@media (max-width: 480px) {
+  .modal-backdrop {
+    padding: 0;
+    align-items: flex-end;
+  }
+  .modal-container {
+    border-radius: 20px 20px 0 0;
+    max-height: 96vh;
+    padding: 20px 16px;
+  }
+  .modal-title {
+    font-size: 21px;
+  }
+  .modal-tab {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}
+
+/* --- Global: better touch targets for mobile --- */
+@media (max-width: 768px) {
+  .nav-icon-btn,
+  .nav-cart-btn,
+  .mobile-menu-btn {
+    min-width: 42px;
+    min-height: 42px;
+  }
+  /* Prevent horizontal overflow on any child element */
+  .hero-section,
+  .catalog-section,
+  .craft-section,
+  .testimonials-section,
+  .faq-section,
+  .contact-section,
+  .free-delivery-section,
+  .visualizer-section {
+    overflow-x: hidden;
+  }
+}
+
+/* --- Floating WhatsApp button: move up on mobile to avoid overlapping footer --- */
+@media (max-width: 768px) {
+  .wa-float-btn {
+    bottom: 18px;
+    right: 18px;
+    width: 52px;
+    height: 52px;
+  }
+}
+

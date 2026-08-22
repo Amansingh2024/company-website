@@ -105,7 +105,7 @@ export default function ProductCard({
                 onQuickView(product);
               }}
             >
-              <Eye size={15} /> <span>3D Quick View</span>
+              <Eye size={15} /> <span>Quick View</span>
             </button>
           </div>
 

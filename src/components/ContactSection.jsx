@@ -8,7 +8,6 @@ export default function ContactSection() {
     name: '',
     phone: '',
     category: 'Solid Wood Bed',
-    budget: 'Under ₹50,000',
     notes: ''
   });
   const [submitted, setSubmitted] = useState(false);
@@ -23,7 +22,7 @@ export default function ContactSection() {
     });
 
     const msg = encodeURIComponent(
-      `Namaste Vishwakarma Showroom! 🌸\n\n*NEW ENQUIRY FROM WEBSITE*\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Interested In:* ${formData.category}\n*Budget Range:* ${formData.budget}\n*Notes / Room Size:* ${formData.notes || 'Please share catalog'}`
+      `Namaste Vishwakarma Showroom! 🌸\n\n*NEW ENQUIRY FROM WEBSITE*\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Interested In:* ${formData.category}\n*Notes / Room Size:* ${formData.notes || 'Please share catalog'}`
     );
 
     setSubmitted(true);
@@ -170,20 +169,6 @@ export default function ContactSection() {
                         <option>Custom Architectural Woodwork</option>
                       </select>
                     </div>
-
-                    <div className="form-group">
-                      <label>Approx Budget Range</label>
-                      <select 
-                        value={formData.budget}
-                        onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                        className="form-select"
-                      >
-                        <option>Under ₹30,000</option>
-                        <option>₹30,000 – ₹60,000</option>
-                        <option>₹60,000 – ₹1,20,000</option>
-                        <option>₹1,20,000+ (Full House Suite)</option>
-                      </select>
-                    </div>
                   </div>
 
                   <div className="form-group">
@@ -199,7 +184,7 @@ export default function ContactSection() {
 
                   <button type="submit" className="btn-luxury-primary w-full form-submit-btn">
                     <MessageCircle size={18} />
-                    <span>Get Instant Price Quote on WhatsApp</span>
+                    <span>Get a Quote on WhatsApp</span>
                   </button>
 
                   <p className="form-privacy-note">

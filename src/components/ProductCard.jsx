@@ -138,10 +138,6 @@ export default function ProductCard({
             <span>{product.material.split('&')[0]}</span>
           </div>
 
-          {/* Price Block */}
-          <div className="p3d-price-block">
-            <span className="price-main">₹{product.price.toLocaleString('en-IN')}</span>
-          </div>
         </div>
       </div>
     </div>

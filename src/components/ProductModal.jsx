@@ -33,7 +33,7 @@ export default function ProductModal({ product, onClose }) {
       setSelectedImage(prev => (prev + 1) % imageSet.length);
     }, 3500);
     return () => clearInterval(timer);
-  }, [paused, showVideo, imageSet.length]);
+  }, [paused, imageSet.length]);
 
   // Reset when product changes
   useEffect(() => {
@@ -154,14 +154,6 @@ export default function ProductModal({ product, onClose }) {
 
             <h2 className="modal-title">{product.name}</h2>
             <p className="modal-subtitle">{product.subtitle}</p>
-
-            <div className="modal-price-box">
-              <div className="price-main">
-                <span className="price-big">₹{product.price.toLocaleString('en-IN')}</span>
-                <span className="save-badge">Direct Workshop Price</span>
-              </div>
-              <p className="price-note">Inclusive of GST, Free Transit Insurance &amp; Room Setup.</p>
-            </div>
 
             <p className="modal-desc">{product.description}</p>
 

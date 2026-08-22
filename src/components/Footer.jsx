@@ -84,10 +84,17 @@ export default function Footer({ onSelectCategory }) {
           <div className="footer-nav-col">
             <h4 className="footer-col-title">Experience Center</h4>
             <div className="footer-contact-info">
-              <p><MapPin size={15} className="text-brass inline-icon" /> Dariyapur Bazar, Bihar, India</p>
+              <a 
+                href="https://www.google.com/maps/place/COSMOS+KREATIONS+%7C%7C+INTERIOR+DESIGNER+IN+PATNA+%7C%7C+BEST+INTERIOR+DESIGNER+IN+PATNA+%7C+ARCHITECT+IN+PATNA/@25.6302081,85.0986258,15.48z/data=!4m10!1m2!2m1!1screative+interiors+patna!3m6!1s0x39ed57786431c76f:0x15e964ac33ca87f8!8m2!3d25.6302081!4d85.0986258!15sChhjcmVhdGl2ZSBpbnRlcmlvcnMgcGF0bmFaGiIYY3JlYXRpdmUgaW50ZXJpb3JzIHBhdG5hkgERaW50ZXJpb3JfZGVzaWduZXKaAURDaTlEUVVsUlFVTnZaRU5vZEhsalJqbHZUMnhPV1ZWc1NrNU9SazVVVmpGS1ZXSlViR0ZOVlZvMVRVUmtWMk5GUlJBQuABAPoBBAhuEEc!16s%2Fg%2F11z1_63sqy"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'inherit', textDecoration: 'none', display: 'block' }}
+              >
+                <p><MapPin size={15} className="text-brass inline-icon" /> COSMOS KREATIONS, Patna, Bihar</p>
+              </a>
               <p><Phone size={15} className="text-brass inline-icon" /> +91 98765 43210</p>
               <p><Mail size={15} className="text-brass inline-icon" /> hello@vishwakarmafurniture.in</p>
-              <p className="warranty-tag">✦ 10-Year Warranty · Free Pan-India Delivery</p>
+              <p className="warranty-tag">✦ 10-Year Warranty · Free Delivery &amp; Fitting</p>
             </div>
           </div>
         </div>

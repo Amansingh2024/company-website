@@ -57,8 +57,8 @@ export default function ContactSection() {
                   <MapPin size={20} className="text-brass" />
                 </div>
                 <div>
-                  <h4 className="detail-title">Showroom &amp; Workshop Address</h4>
-                  <p className="detail-text">Dariyapur Bazar (Main Road), Bihar, India</p>
+                  <h4 className="detail-title">Showroom &amp; Experience Center</h4>
+                  <p className="detail-text">COSMOS KREATIONS, Patna, Bihar, India</p>
                 </div>
               </div>
 
@@ -93,15 +93,35 @@ export default function ContactSection() {
               </div>
             </div>
 
-            {/* Simulated Interactive Map Display */}
-            <div className="map-preview-frame">
-              <div className="map-pulse-pin">
-                <span className="pin-ring" />
-                <span className="pin-dot" />
+            {/* Live Interactive Google Map Frame */}
+            <div className="map-live-container">
+              <div className="map-live-header">
+                <div className="map-live-title">
+                  <MapPin size={16} className="text-brass" />
+                  <span><b>COSMOS KREATIONS</b> · Patna, Bihar</span>
+                </div>
+                <a 
+                  href="https://www.google.com/maps/place/COSMOS+KREATIONS+%7C%7C+INTERIOR+DESIGNER+IN+PATNA+%7C%7C+BEST+INTERIOR+DESIGNER+IN+PATNA+%7C+ARCHITECT+IN+PATNA/@25.6302081,85.0986258,15.48z/data=!4m10!1m2!2m1!1screative+interiors+patna!3m6!1s0x39ed57786431c76f:0x15e964ac33ca87f8!8m2!3d25.6302081!4d85.0986258!15sChhjcmVhdGl2ZSBpbnRlcmlvcnMgcGF0bmFaGiIYY3JlYXRpdmUgaW50ZXJpb3JzIHBhdG5hkgERaW50ZXJpb3JfZGVzaWduZXKaAURDaTlEUVVsUlFVTnZaRU5vZEhsalJqbHZUMnhPV1ZWc1NrNU9SazVVVmpGS1ZXSlViR0ZOVlZvMVRVUmtWMk5GUlJBQuABAPoBBAhuEEc!16s%2Fg%2F11z1_63sqy" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="map-directions-btn"
+                >
+                  <span>Get Directions</span>
+                  <Send size={12} />
+                </a>
               </div>
-              <div className="map-badge">
-                <b>Vishwakarma Flagship Store</b>
-                <span>Dariyapur Bazar (Main Road, Parking Available)</span>
+
+              <div className="map-iframe-wrap">
+                <iframe
+                  title="COSMOS KREATIONS Patna Location"
+                  src="https://maps.google.com/maps?q=25.6302081,85.0986258&hl=en&z=16&output=embed"
+                  width="100%"
+                  height="220"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </div>
           </div>

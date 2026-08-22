@@ -156,7 +156,7 @@ export default function RoomVisualizer({ onSelectCategory }) {
               />
               <div
                 key={`${activeRoom}-${finish}`}
-                className="vis-finish-tint vis-image-fade"
+                className={`vis-finish-tint vis-finish-tint--${activeRoom} vis-image-fade`}
                 style={{ '--finish-color': variant.swatch }}
                 aria-hidden="true"
               />

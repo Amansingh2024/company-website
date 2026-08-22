@@ -1,6 +1,6 @@
 export const CATEGORIES = [
-  { id: 'all', name: 'All Products', icon: 'Sparkles', count: 25 },
-  { id: 'beds', name: 'Luxury Beds', icon: 'BedDouble', count: 9 },
+  { id: 'all', name: 'All Products', icon: 'Sparkles', count: 23 },
+  { id: 'beds', name: 'Luxury Beds', icon: 'BedDouble', count: 7 },
   { id: 'sofas', name: 'Handcrafted Sofas', icon: 'Armchair', count: 8 },
   { id: 'electronics', name: 'Home Electronics', icon: 'Tv', count: 8 }
 ];
@@ -39,39 +39,6 @@ export const PRODUCTS = [
       { label: 'Finish', value: 'Glossy Teak Walnut Polyurethane Finish' },
       { label: 'Weight Capacity', value: 'Up to 550 kg load tested' },
       { label: 'Assembly', value: 'Zero-effort free room setup included' }
-    ]
-  },
-  {
-    id: 'bed-2',
-    category: 'beds',
-    categoryName: 'Beds',
-    name: 'Aura Velvet Floating King Bed',
-    subtitle: 'Underbed Smart Ambient Glow & Wingback Velvet Headboard',
-    price: 38499,
-    originalPrice: 49000,
-    rating: 4.8,
-    reviewsCount: 94,
-    isBestseller: false,
-    is3DAvailable: true,
-    video3D: 'https://www.youtube.com/embed/kJQP7kiw9Fk',
-    tag: 'Trending · Smart Underglow',
-    material: 'Kiln-Dried Hardwood & High GSM Dutch Velvet',
-    dimensions: '80" L x 74" W x 52" H',
-    warranty: '5-Year Frame & Foam Warranty',
-    delivery: 'Free Delivery with Room Setup',
-    emi: '₹1,860 / month',
-    images: [
-      'https://images.unsplash.com/photo-1742319096912-7bb94fdfeb03?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1540518614846-7ede433c4ef2?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=85'
-    ],
-    description: 'A contemporary cantilevered design that appears to hover above the floor. Features built-in warm LED under-glow with magnetic wireless controls, wrapped in plush acoustic Dutch velvet upholstery for deep serene sleep.',
-    specs: [
-      { label: 'Frame Structure', value: 'Cantilevered Reinforced Steel & Solid Sal' },
-      { label: 'Upholstery', value: '380 GSM Stain-Repellent Dutch Velvet' },
-      { label: 'Lighting', value: 'Integrated 3000K Warm LED strip with dimmer' },
-      { label: 'Foam Density', value: '40-Density Ultra High Resilience Foam' },
-      { label: 'Noise Dampening', value: 'Anti-Squeak Slat Isolators' }
     ]
   },
   {
@@ -137,38 +104,6 @@ export const PRODUCTS = [
       { label: 'Lift Capacity', value: 'Lift assists up to 120 kg mattress effortlessly' },
       { label: 'Internal Compartments', value: '4 Segregated Dust-Proof Chambers' },
       { label: 'Corner Protection', value: 'Chamfered Beveled Edges (Kid Safe)' }
-    ]
-  },
-  {
-    id: 'bed-5',
-    category: 'beds',
-    categoryName: 'Beds',
-    name: 'Anaya Channel-Tufted Upholstered Bed',
-    subtitle: 'Italian Boucle Fabric & Padded Wingback Headboard',
-    price: 29499,
-    originalPrice: 38000,
-    rating: 4.9,
-    reviewsCount: 88,
-    isBestseller: false,
-    is3DAvailable: true,
-    video3D: 'https://www.youtube.com/embed/RgKAFK5djSk',
-    tag: 'Soft Touch · Boucle Linen',
-    material: 'Italian Boucle Fabric & Kiln-Dried Pine Core',
-    dimensions: '78" L x 66" W x 46" H',
-    warranty: '5-Year Frame & Fabric Warranty',
-    delivery: 'Free Home Delivery & Installation',
-    emi: '₹1,425 / month',
-    images: [
-      'https://images.unsplash.com/photo-1766928210452-2470f91bae26?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1540518614846-7ede433c4ef2?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=85'
-    ],
-    description: 'Wrap your bedroom in cozy warmth. Anaya features hand-tufted vertical fluting with tactile Boucle fabric that is soft to the touch and resistant to everyday scuffs and spills.',
-    specs: [
-      { label: 'Fabric Grade', value: 'Heavy Duty 420 GSM Textured Boucle' },
-      { label: 'Underbed Clearance', value: '7 inches (Robotic vacuum friendly)' },
-      { label: 'Base Support', value: 'Multi-layer bentwood slats for spine support' },
-      { label: 'Color Options', value: 'Oatmeal Cream, Slate Grey, Warm Terracotta' }
     ]
   },
   {

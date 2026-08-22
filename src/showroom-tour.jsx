@@ -1,13 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ArrowLeft, BedDouble, Armchair, Tv, MessageCircle, Play, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, BedDouble, Armchair, Tv, MessageCircle, Play, Pause, ShieldCheck } from 'lucide-react';
 import './styles/theme.css';
 import './showroom-tour.css';
 
 const baseUrl = import.meta.env.BASE_URL;
 const whatsappUrl = 'https://wa.me/919876543210?text=Namaste%20Vishwakarma%20Furniture!%20I%20want%20a%20showroom%20video%20tour%20and%20a%20product%20quote.';
+const filmScenes = [
+  {
+    title: 'Signature bed',
+    caption: 'Solid wood detail and finish',
+    image: `${baseUrl}images/luxury-bed-day.png`,
+  },
+  {
+    title: 'Living room comfort',
+    caption: 'A closer look at our handcrafted sofa',
+    image: 'https://images.unsplash.com/photo-1573866926487-a1865558a9cf?auto=format&fit=crop&w=1400&q=85',
+  },
+  {
+    title: 'Smart home setup',
+    caption: 'Electronics that complete the room',
+    image: `${baseUrl}images/home-appliances.jpg`,
+  },
+];
 
 function ShowroomTour() {
+  const [sceneIndex, setSceneIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const scene = filmScenes[sceneIndex];
+
+  useEffect(() => {
+    if (!isPlaying) return undefined;
+    const timer = window.setInterval(() => {
+      setSceneIndex((current) => (current + 1) % filmScenes.length);
+    }, 4500);
+    return () => window.clearInterval(timer);
+  }, [isPlaying]);
+
   return (
     <main className="tour-page">
       <div className="luxury-grain-overlay" />
@@ -30,13 +59,17 @@ function ShowroomTour() {
 
         <div className="tour-video-shell">
           <div className="tour-video-glow" />
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/c3mUxTqLgrc?rel=0"
-            title="Professional showroom host presenting a bed, sofas and electronics"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
-          <span className="tour-video-label">Hosted walkthrough · Bed · Sofa · Electronics</span>
+          <div className="tour-film" style={{ backgroundImage: `url(${scene.image})` }} role="img" aria-label={`${scene.title}: ${scene.caption}`}>
+            <div className="tour-film-shade" />
+            <div className="tour-presenter"><span className="tour-presenter-dot" /> Vishwakarma showroom host</div>
+            <div className="tour-film-caption"><span>{scene.title}</span><strong>{scene.caption}</strong></div>
+            <button className="tour-film-control" type="button" onClick={() => setIsPlaying((playing) => !playing)} aria-label={isPlaying ? 'Pause showroom film' : 'Play showroom film'}>
+              {isPlaying ? <Pause size={18} /> : <Play size={18} fill="currentColor" />}
+            </button>
+            <div className="tour-film-progress" aria-hidden="true">
+              {filmScenes.map((filmScene, index) => <span key={filmScene.title} className={index === sceneIndex ? 'active' : ''} />)}
+            </div>
+          </div>
         </div>
       </section>
 

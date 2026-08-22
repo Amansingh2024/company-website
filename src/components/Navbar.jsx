@@ -45,7 +45,7 @@ export default function Navbar({
               href="#collections" 
               onClick={() => { playClick(); onSelectCategory('beds'); }}
             >
-              Beds (9)
+              Beds (7)
             </a>
             <a 
               href="#collections" 
@@ -118,7 +118,7 @@ export default function Navbar({
               setMobileMenuOpen(false);
             }}
           >
-            <BedDouble size={20} /> 9 Solid Wood Beds
+            <BedDouble size={20} /> 7 Solid Wood Beds
           </a>
           <a 
             href="#collections" 

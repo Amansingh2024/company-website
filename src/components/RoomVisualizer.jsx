@@ -41,7 +41,7 @@ const ROOM_VARIANTS = {
       badge: 'Velvet Floating Bed · Emerald Glow',
       title: 'Jewel Bedroom Suite 3D',
       image: publicImage('luxury-bed-night.png'),
-      productsIncluded: ['Aura Velvet Floating King Bed', '2x Velvet Ottoman Benches', 'Smart Ambient LED Lighting'],
+      productsIncluded: ['Maharaja Grand Sheesham King Bed', '2x Velvet Ottoman Benches', 'Smart Ambient LED Lighting'],
       statusTag: 'Velvet Upholstery Edition',
       warranty: '5-Year Frame & Foam',
       material: '380 GSM Dutch Velvet & Kiln-Dried Hardwood',

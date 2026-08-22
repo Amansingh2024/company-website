@@ -56,9 +56,9 @@ export default function Footer({ onSelectCategory }) {
             </div>
           </div>
 
-          {/* Quick Links: 7 Beds */}
+          {/* Quick Links: 6 Beds */}
           <div className="footer-nav-col">
-            <h4 className="footer-col-title">7 Luxury Beds</h4>
+            <h4 className="footer-col-title">6 Luxury Beds</h4>
             <ul className="footer-links">
               <li><a href="#collections" onClick={() => onSelectCategory('beds')}>Maharaja Grand Sheesham</a></li>
               <li><a href="#collections" onClick={() => onSelectCategory('beds')}>Burma Teak Canopy</a></li>

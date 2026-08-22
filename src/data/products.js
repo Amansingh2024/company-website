@@ -1,6 +1,6 @@
 export const CATEGORIES = [
-  { id: 'all', name: 'All Products', icon: 'Sparkles', count: 23 },
-  { id: 'beds', name: 'Luxury Beds', icon: 'BedDouble', count: 7 },
+  { id: 'all', name: 'All Products', icon: 'Sparkles', count: 22 },
+  { id: 'beds', name: 'Luxury Beds', icon: 'BedDouble', count: 6 },
   { id: 'sofas', name: 'Handcrafted Sofas', icon: 'Armchair', count: 8 },
   { id: 'electronics', name: 'Home Electronics', icon: 'Tv', count: 8 }
 ];
@@ -132,36 +132,6 @@ export const PRODUCTS = [
       { label: 'Wood Seasoning', value: 'Vacuum Press Kiln-Dried (under 8% moisture)' },
       { label: 'Bed Base', value: 'Reinforced solid plank bedboard' },
       { label: 'Polish', value: 'Non-toxic, zero VOC Italian PU clear coat' }
-    ]
-  },
-  {
-    id: 'bed-7',
-    category: 'beds',
-    categoryName: 'Beds',
-    name: 'Zen Minimalist Low Platform Bed',
-    subtitle: 'Japanese Inspired Low Profile with Floating Side Shelves',
-    price: 26999,
-    originalPrice: 35000,
-    rating: 4.8,
-    reviewsCount: 110,
-    isBestseller: false,
-    is3DAvailable: true,
-    tag: 'Minimal Japanese · Zen Living',
-    material: 'Solid Ashwood & Seasoned Marandi Core',
-    dimensions: '84" L x 80" W x 28" H (Extended Platform)',
-    warranty: '5-Year Frame Warranty',
-    delivery: 'Free Delivery',
-    emi: '₹1,305 / month',
-    images: [
-      'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1540518614846-7ede433c4ef2?auto=format&fit=crop&w=1200&q=85'
-    ],
-    description: 'Bring meditative tranquility to your bedroom. Features wide side ledges that serve as natural nightstands for your books and lamps, engineered for low-profile modern living.',
-    specs: [
-      { label: 'Platform Ledge', value: '6-inch perimeter floating border' },
-      { label: 'Ergonomic Angle', value: '105° tilted angled rest backboard' },
-      { label: 'Assembly Style', value: 'Interlocking tool-less hardware system' }
     ]
   },
   {

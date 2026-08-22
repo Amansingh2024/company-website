@@ -3,5 +3,13 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/company-website/'
+  base: '/company-website/',
+  build: {
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+        showroomTour: 'showroom-tour.html',
+      },
+    },
+  },
 });

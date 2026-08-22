@@ -4171,32 +4171,117 @@ html, body {
     padding-top: 14px;
   }
 
-  /* 3D studio canvas container */
+  /* 3D studio canvas container: Increased height & dimensions so 3D model is fully visible */
   .three-studio-wrapper {
-    height: 320px;
+    height: 480px;
     width: 100%;
+    position: relative;
+    border-radius: var(--radius-md);
   }
   .three-canvas-container {
     touch-action: pan-y;
+    width: 100%;
+    height: 100%;
   }
   .stage-header-badge {
     top: 10px;
     left: 10px;
-    font-size: 9.5px;
-    padding: 4px 10px;
+    font-size: 9px;
+    padding: 4px 8px;
+    letter-spacing: 0.06em;
   }
   .studio-top-bar {
-    top: 48px;
-    left: 10px;
-    right: 10px;
+    top: 42px;
+    left: 8px;
+    right: 8px;
+    gap: 4px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  .studio-model-selector, .studio-actions {
+    display: flex;
+    gap: 4px;
   }
   .model-pill {
-    padding: 6px 10px;
-    font-size: 11px;
+    padding: 5px 9px;
+    font-size: 10.5px;
+    gap: 4px;
+    white-space: nowrap;
   }
   .tool-btn {
-    padding: 6px 8px;
-    font-size: 10.5px;
+    padding: 5px 8px;
+    font-size: 10px;
+    gap: 4px;
+    white-space: nowrap;
+  }
+
+  /* Sleek Compact Bottom Controls on Mobile */
+  .studio-bottom-bar {
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+    padding: 6px 10px;
+    gap: 4px;
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: 12px;
+    background: rgba(16, 12, 8, 0.82);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(227, 189, 118, 0.25);
+  }
+  .studio-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    width: 100%;
+  }
+  .studio-group-label {
+    font-size: 9px;
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+    color: var(--brass-light);
+  }
+  .swatch-row {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+  }
+  .swatch-row::-webkit-scrollbar {
+    display: none;
+  }
+  .swatch-btn {
+    padding: 3px 7px;
+    font-size: 10px;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .swatch-color {
+    width: 11px;
+    height: 11px;
+  }
+  .light-pills {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+  }
+  .light-pills::-webkit-scrollbar {
+    display: none;
+  }
+  .light-btn {
+    padding: 3px 7px;
+    font-size: 10px;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .studio-hint {
+    display: none;
   }
 
   /* Bottom ticker */
@@ -4206,6 +4291,20 @@ html, body {
   }
   .ticker-text {
     font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .three-studio-wrapper {
+    height: 460px;
+  }
+  .model-pill {
+    padding: 4px 7px;
+    font-size: 9.5px;
+  }
+  .tool-btn {
+    padding: 4px 6px;
+    font-size: 9.5px;
   }
 }
 

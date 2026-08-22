@@ -298,10 +298,17 @@ export default function ThreeCanvas({ initialModel = 'bed' }) {
     const scene = new THREE.Scene();
     sceneRef.current = scene;
 
-    // 2. Camera
-    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    camera.position.set(4.5, 3.2, 5.8);
-    camera.lookAt(0, 0.8, 0);
+    // 2. Camera: Adjust FOV and position for mobile vs desktop so the 3D model is fully visible
+    const isMobile = width < 768;
+    const fov = isMobile ? 50 : 45;
+    const camera = new THREE.PerspectiveCamera(fov, width / height, 0.1, 100);
+    if (isMobile) {
+      camera.position.set(4.8, 3.6, 6.4);
+      camera.lookAt(0, 0.9, 0);
+    } else {
+      camera.position.set(4.5, 3.2, 5.8);
+      camera.lookAt(0, 0.8, 0);
+    }
     cameraRef.current = camera;
 
     // 3. Renderer with antialiasing and shadow maps
@@ -439,6 +446,15 @@ export default function ThreeCanvas({ initialModel = 'bed' }) {
       if (!container || !renderer || !camera) return;
       const w = container.clientWidth;
       const h = container.clientHeight;
+      const mobile = w < 768;
+      camera.fov = mobile ? 50 : 45;
+      if (mobile) {
+        camera.position.set(4.8, 3.6, 6.4);
+        camera.lookAt(0, 0.9, 0);
+      } else {
+        camera.position.set(4.5, 3.2, 5.8);
+        camera.lookAt(0, 0.8, 0);
+      }
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
